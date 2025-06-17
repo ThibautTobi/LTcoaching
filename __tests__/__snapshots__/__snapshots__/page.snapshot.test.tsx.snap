@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Home Snapshot correspond au snapshot sauvegardé 1`] = `
+<DocumentFragment>
+  <div
+    class="max-w-2xl "
+  >
+    <h1>
+      test
+    </h1>
+  </div>
+</DocumentFragment>
+`;
