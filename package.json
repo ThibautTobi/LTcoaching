@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prepare": "husky",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -12,6 +11,20 @@
     "test:watch": "jest --watch",
     "format": "prettier --check .",
     "format:fix": "prettier --write ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{json,css,md,html}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
