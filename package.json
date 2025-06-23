@@ -15,12 +15,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx lint-staged"
+      "pre-commit": "npm run check:types && npx lint-staged"
     }
   },
   "lint-staged": {
   "**/*.{ts,tsx}": [
-    "tsc --noEmit",
     "eslint --fix",
     "prettier --write"
   ],
