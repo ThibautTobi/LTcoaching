@@ -1,4 +1,4 @@
-name: CI -  Wite Web LTcoaching
+name: CI - LTcoaching
 
 on:
   push:
@@ -23,8 +23,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Audit vulnerabilities
+        run: npm audit --production --audit-level=high || true
+        # Le "|| true" empêche l'échec du job si des vulnérabilités sont trouvées
+
       - name: Check TypeScript types
-        run: npx tsc --noEmit
+        run: npm run check:types
 
       - name: Run ESLint
         run: npm run lint
@@ -34,3 +38,6 @@ jobs:
 
       - name: Run Jest tests
         run: npm run test
+
+      - name: Build project
+        run: npm run build
