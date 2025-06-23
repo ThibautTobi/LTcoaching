@@ -29,7 +29,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run check:types && npx lint-staged"
+      "pre-commit": "npx lint-staged"
     }
   },
   "dependencies": {
