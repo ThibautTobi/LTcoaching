@@ -3,6 +3,9 @@ import { Button } from '@/src/components/ui/button';
 import Image from 'next/image';
 
 export default function Home() {
+
+  const number: number = "je suis une chaîne";
+  
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="relative w-full h-[250px] md:h-[300x] lg:h-[350px] xl:h-[450px] 2xl:h-[500px] overflow-hidden">
