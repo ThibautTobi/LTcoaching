@@ -19,15 +19,19 @@
     }
   },
   "lint-staged": {
-    "**/*.{ts,tsx,js,jsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "tsc --noEmit"
-    ],
-    "**/*.{json,css,md,html}": [
-      "prettier --write"
-    ]
-  },
+  "**/*.{ts,tsx}": [
+    "tsc --noEmit",
+    "eslint --fix",
+    "prettier --write"
+  ],
+  "**/*.{js,jsx}": [
+    "eslint --fix",
+    "prettier --write"
+  ],
+  "**/*.{json,css,md,html}": [
+    "prettier --write"
+  ]
+},
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
