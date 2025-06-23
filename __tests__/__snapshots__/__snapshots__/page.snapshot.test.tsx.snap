@@ -8,6 +8,9 @@ exports[`Home Snapshot correspond au snapshot sauvegardé 1`] = `
     <h1>
       test
     </h1>
+    <p>
+      Lorem ipsum dolor, sit amet consectetur 
+    </p>
   </div>
 </DocumentFragment>
 `;
