@@ -10,7 +10,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "check:types": "tsc --noEmit"
   },
   "husky": {
     "hooks": {
@@ -20,7 +21,8 @@
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --write",
+      "tsc --noEmit"
     ],
     "**/*.{json,css,md,html}": [
       "prettier --write"
