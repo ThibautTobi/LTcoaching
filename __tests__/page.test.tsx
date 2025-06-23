@@ -8,6 +8,5 @@ describe('Home Page', () => {
 
     // Vérifie la présence du titre
     expect(screen.getByText('test')).toBeInTheDocument();
-
   });
 });
