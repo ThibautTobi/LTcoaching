@@ -1,2 +1,2 @@
-npm lint
-npm format
+npm test
+npm run format
