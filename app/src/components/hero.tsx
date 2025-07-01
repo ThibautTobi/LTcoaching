@@ -2,6 +2,7 @@ export default function Hero() {
   return (
     <>
       <h2>test h2</h2>
+
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis aut
         ducimus id vitae rem, voluptatem recusandae temporibus exercitationem
