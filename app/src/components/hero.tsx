@@ -3,17 +3,16 @@ export default function Hero() {
     <>
       <h2>test h2</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nam
-        inventore aut molestiae, optio, error qui quibusdam blanditiis delectus
-        voluptatibus quos repellendus? Sint ab maxime dolores magnam minima
-        nesciunt, iste repellat sequi, voluptate molestias cupiditate numquam
-        laudantium modi officia quidem sunt eum dignissimos. Repellendus
-        sapiente esse nesciunt eaque expedita placeat quasi eos quas consectetur
-        odio. Ea delectus tempore illo enim eligendi velit vitae sequi aut ab
-        cupiditate aliquid molestias, ut non nostrum illum quis qui laborum
-        odit. Perferendis consequatur ullam accusamus placeat, omnis harum ea
-        sit porro nisi tempore unde vel amet architecto similique enim expedita
-        ut reprehenderit!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis aut
+        ducimus id vitae rem, voluptatem recusandae temporibus exercitationem
+        sunt, saepe iure maxime odit quia cumque amet placeat nisi modi sed!
+        Laudantium illo soluta, magni corrupti odit cupiditate eaque quaerat
+        asperiores enim dignissimos dolorem veritatis minus ipsa sequi nulla
+        quam? Libero harum voluptas ab animi hic quos iure tempora iusto
+        consectetur? Possimus vitae commodi necessitatibus quo, dolor modi illo
+        accusantium nisi. Odit nihil impedit dolorum aperiam assumenda earum aut
+        eaque facilis tenetur hic veritatis, ea magnam numquam nobis et debitis
+        placeat laboriosam recusandae asperiores suscipit delectus sunt sed!
       </p>
     </>
   );
