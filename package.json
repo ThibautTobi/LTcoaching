@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "eslint . --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "format": "prettier --check .",
@@ -16,13 +17,11 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "npm run lint -- --fix",
-      "npm run format:fix",
-      "git add"
+      "npm run lint",
+      "npm run format"
     ],
     "*.{css,scss,json,md,tsx}": [
-      "npm run format:fix",
-      "git add"
+      "npm run format"
     ],
     "*.ts,tsx": [
       "npm run check:types"
