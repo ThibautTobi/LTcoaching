@@ -1,37 +1,72 @@
-/**
- * @file Header.tsx
- * Composant Header avec Logo et import du composant de navigation principal de l'application.
- * Gère l'affichage du menu responsive (desktop & mobile).
- */
+'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import NavBar from './navBar';
-import Image from 'next/image';
+import { Button } from '@/src/components/ui/button';
+import { Menu, X } from 'lucide-react';
 
-/**
- * Composant Header : Affiche une barre de navigation responsive
- * @returns {JSX.Element} Le header avec navigation desktop et mobile
- */
-
+const links = [
+  { name: 'Accueil', href: '/' },
+  { name: 'À propos', href: '/a-propos' },
+  { name: 'Services', href: '/services' },
+  { name: 'Tarifs', href: '/tarifs' },
+  { name: 'Contact', href: '/contact' },
+];
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <header className="w-full bg-background sticky top-0 z-50 border-b-2 border-primary">
-      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
-        {/* Logo */}
-        <div className="text-xl font-bold">
-          <Link href="/" aria-label="acceuil">
-            <Image
-              src="/LTcoaching-sansBG.png"
-              width={80}
-              height={80}
-              alt="Logo LTcoaching"
-              priority
-            />
-          </Link>
+    <header className="w-full">
+      <div>{/*logo*/}</div>
+      <nav>
+        {/* Menu burger visible uniquement sur mobile */}
+        <Button
+          className="md:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Menu mobile"
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </Button>
+
+        {/* Menu desktop */}
+        <ul className="hidden mb:flex">
+          {links.map((link) => (
+            <li key={link.name}>
+              <Link href={link.href} className="hover:text-white">
+                {link.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Menu mobile déroulant */}
+
+      {isOpen && (
+        <div className="mb:hidden">
+          <ul>
+            {links.map((link) => (
+              <li key={link.name}>
+                <Link
+                  href={link.href}
+                  className="hover:text-white"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-        <p className="italic text-xs">Sport Bien-être Nutrition</p>
-        <NavBar />
-      </div>
+      )}
     </header>
+    // <div className="flex flex-row justify-around max-w-max h-40 bg-slate-600">
+    //   <p>LT Coaching</p>
+    //   <ul className="flex flex-row">
+    //     <li>Home</li>
+    //     <li>Services</li>
+    //     <li>Contact</li>
+    //   </ul>
+    // </div>
   );
 }
