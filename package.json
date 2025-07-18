@@ -28,15 +28,22 @@
     ]
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@hookform/resolvers": "^5.1.1",
+    "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.471.1",
+    "emailjs-com": "^3.2.0",
+    "lucide-react": "^0.471.2",
     "next": "14.2.16",
     "react": "^18",
     "react-dom": "^18",
+    "react-google-recaptcha": "^3.1.0",
+    "react-hook-form": "^7.60.0",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
@@ -46,6 +53,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-google-recaptcha": "^2.1.9",
     "@typescript-eslint/eslint-plugin": "^8.34.1",
     "@typescript-eslint/parser": "^8.34.1",
     "eslint": "^8.57.1",
