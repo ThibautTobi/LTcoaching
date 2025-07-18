@@ -1,94 +1,20 @@
-/**
- *  Idées déjà intégrées :
- * - Section SEO avec h1 clair et description.
- * - Cartes coachs professionnelles, responsive, avec hover effet CSS.
- * - Boutons personnalisés sous chaque coach pour favoriser l’action.
- * - Liste de formations et lieux de travail claires et iconifiées.
- * - Accessibilité : aria-labels, alt d’image explicite.
- * - Optimisation SEO : structure sémantique, contenu clair.
- * - Animation légère sans Framer Motion (hover + animate-fade-in possible via Tailwind).
+import { Button } from '@/src/components/ui/button';
 
- *  Idées supplémentaires possibles :
- * 1. Composant `CoachCard.tsx` réutilisable pour simplifier le code.
- * 2. Section "Avis clients" (testimonials).
- * 3. Bloc "Nos valeurs" ou "Notre mission".
- * 4. Statistiques : "200 clients satisfaits", "10 ans d’expérience".
- * 5. Intégration future d’un CMS (ex: Sanity, Strapi) pour charger les données.
- * 6. Ajouter des badges de compétences ou de spécialités.
- * 7. Boutons vers WhatsApp / mail direct ou formulaires dynamiques.
- * 8. Carte Google Maps pour localiser les salles (accessibilité + preuve).
- * 9. Ajout de balises meta `next/head` pour améliorer encore le SEO.
- * 10. Accessibilité renforcée (navigation clavier + contraste).
-
- */
-
-'use client';
-
-import CoachProfileCard from '@/app/src/components/coachCard';
-
-/**
- * @file Presentation.tsx
- * @description Ce composant présente les profils de coachs sportifs avec leurs informations détaillées :
- *              nom, image, description, formations, spécialités, expériences et un bouton de contact.
- *              Il intègre également le composant réutilisable `CoachProfileCard`.
- *
- * @component
- * @returns {JSX.Element} Une section de présentation visuelle des coachs, avec mise en forme responsive.
- *
- * @example
- * // Utilisation dans une page Next.js
- * <Presentation />
- *
- * @remarks
- * - Utilise des composants UI personnalisés : `Button`, `CoachProfileCard`, `Lucide icons`.
- * - Utilise Next.js pour le routage (`Link`) et le chargement d'image (`Image`).
- * - Le composant contient un coach affiché manuellement en HTML + un coach via `CoachProfileCard`.
- *   Cela peut servir à comparer ou tester deux approches d'intégration (statique vs dynamique).
- */
-
-export default function Presentation(): JSX.Element {
+export default function Présentation() {
   return (
-    <div className="min-h-screen to-muted text-foreground">
-      <section className="py-16 px-8 max-w-6xl mx-auto space-y-20">
-        <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold text-primary">
-            Découvrez nos coachs
-          </h1>
-          <p className="text-muted-foreground text-lg">
-            Des professionnels passionnés pour vous accompagner dans votre
-            transformation physique et mentale.
-          </p>
-        </div>
-        <CoachProfileCard
-          name="Laure"
-          image="/images.png"
-          imageAlt="Photo de Laure, coach sportif"
-          description="Coach sportif diplômé avec plus de 7 ans d'expérience, spécialisé en bien être et nutrition. Professeur de yoga et pilate. Reflexologue pour adulte et nourrison."
-          formations={[
-            'BPJEPS AF - Haltérophilie/Musculation et Cours Collectifs',
-            'Coach en nutrition',
-            'Professeur de yoga',
-            'Reflexologue plantaire,palmaire et crânienne',
-            'instructeur LesMills',
-          ]}
-          specialites={['Nutrition', 'Sport Santé', 'Bien-être']}
-          showContact={true}
-        />
-        {/* <CoachProfileCard
-          name="Thibaut"
-          image="/images.png"
-          imageAlt="Photo de thibaut, coach sportif"
-          description="Coach sportif diplômé avec plus de 7 ans d'expérience, spécialisé en bien être et nutrition. Professeur de yoga et pilate. Reflexologue pour adulte et nourrison."
-          formations={[
-            'BPJEPS AF - Haltérophilie/Musculation et Cours Collectifs',
-            'Coach en nutrition',
-            'Professeur de yoga',
-            'Reflexologue plantaire,palmaire et crânienne',
-            'instructeur LesMills'
-          ]}
-          specialites={['Nutrition','Sport Santé','Bien-être']}
-          showContact={true}
-        /> */}
+    <div>
+      <section>
+        <h2>titre 2</h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa fugiat
+          quis dicta quasi assumenda pariatur blanditiis est cum facere! Velit
+          exercitationem magni similique, atque ab animi eveniet rem distinctio
+          doloribus possimus cupiditate consequuntur laboriosam soluta et eos
+          laborum, aut, facilis ratione esse. Voluptate eum unde totam officia
+          nulla sed iusto modi culpa nam error qui aliquam, laudantium esse
+          aspernatur fuga in corrupti enim. Vel!
+        </p>
+        <Button> Contacté nous </Button>
       </section>
     </div>
   );
