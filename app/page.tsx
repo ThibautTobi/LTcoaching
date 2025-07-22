@@ -1,67 +1,54 @@
 import Link from 'next/link';
+import { Button } from '@/src/components/ui/button';
 
 export default function Home() {
   return (
-    <>
+    <main className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section className="w-full">
-        <h1 className="font-bold mb-4">
+      <section className="w-full py-10 px-6 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
           Atteins tes objectifs avec{' '}
-          <span className="text-blue-600">LTcoaching</span>
+          <span className="text-primary">LTcoaching</span>
         </h1>
-        <p className="text-lg mb-6">
-          Coaching personnalisé, suivi nutritionnel, motivation constante.
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Coaching personnalisé, suivi nutritionnel, motivation constante. des
+          coachs diplômés à tes côtés, à domicile ou en ligne.
         </p>
-        <Link href="/contact">Réserve ta séance</Link>
+        <Link href="/Contact">
+          <Button size="lg" className="rounded-full px-6 text-base shadow-md">
+            Réserve ta séance
+          </Button>
+        </Link>
       </section>
 
-      {/* Présention */}
-      <section className="px-4">
-        <h2 className="mb-4">Qui sommes nous ?</h2>
-        <p>
-          Coach sportif diplômé avec plus de 7 ans d expérience, je t’aide à
-          transformer ton corps et ton mental. Que tu veuilles perdre du poids,
-          prendre du muscle, ou améliorer ta santé, je t’accompagne pas à pas
-          avec des séances sur-mesure et un vrai suivi.
+      {/* Présentation */}
+      <section className="py-10 px-6 max-w-5xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-4 text-primary">
+          Qui sommes-nous ?
+        </h2>
+        <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+          Des Coachs sportif diplômé avec plus de 7 ans d&apos;expérience, nous
+          allons t&apos;aider à transformer ton corps et ton mental. Que tu
+          veuilles perdre du poids, prendre du muscle ou améliorer ta santé,
+          nous t&apos;accompagnerons pas à pas avec des séances sur-mesure et un
+          vrai suivi.
         </p>
-      </section>
-
-      {/* Services */}
-      <section className="px-4">
-        <div>
-          <h2 className="font-semibold">Mes services</h2>
-          <div className="gap-6">
-            <div>
-              Coaching en salle
-              <br />
-              Séances personnalisées dans ta salle ou la mienne. Suivi et plan
-              sur mesure.
-              <div />
-              <div>
-                Coaching à domicile
-                <br />
-                Je me déplace chez toi avec le matériel nécessaire. Confort &
-                efficacité.
-              </div>
-              <div>
-                Coaching en ligne
-                <br />
-                Plans d’entraînement + visioconférences. Idéal pour garder le
-                rythme à distance.
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* Appel à l'action final */}
-      <section className="px-4 text-center">
-        <h2 className="font-bold">Prêt à transformer ton corps et ta vie ?</h2>
-        <p className="p-4">
-          Réserve une séance gratuite pour faire le point ensemble.
+      <section className="py-6 px-6 text-center">
+        <h2 className="text-3xl font-bold mb-4 text-primary">
+          Prêt à transformer ton corps et ta vie ?
+        </h2>
+        <p className="text-muted-foreground text-lg mb-8">
+          Réserve une séance dès maintenant et construisons ton plan ensemble.
         </p>
-        <Link href="/contact">Me contacter</Link>
+        <Link href="/Contact">
+          <Button size="lg" className="rounded-full px-6 text-base shadow-md">
+            Nous contacter
+          </Button>
+        </Link>
       </section>
-    </>
+    </main>
   );
 }
