@@ -6,7 +6,7 @@
 
 import NavBar from './navBar';
 import Image from 'next/image';
-import Logo from '@/public/LTcoaching-sansBG.png';
+
 /**
  * Composant Header : Affiche une barre de navigation responsive
  * @returns {JSX.Element} Le header avec navigation desktop et mobile
@@ -18,7 +18,12 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="text-xl font-bold">
-          <Image src={Logo} width={80} height={80} alt="Logo LTcoaching" />
+          <Image
+            src="/LTcoaching-sansBG.png"
+            width={80}
+            height={80}
+            alt="Logo LTcoaching"
+          />
         </div>
         <NavBar />
       </div>
