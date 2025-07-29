@@ -3,47 +3,48 @@ export type dataType = {
   title: string;
   image: string;
   imageAlt: string;
-  shortDescription: string;
-  bigDescription: string;
-  longDescription: string;
+  Description: string;
   price: string;
+  showLink?: boolean;
+  showImage?: boolean;
+  categories: ('sport' | 'bien-être' | 'nutrition')[];
 };
 
 export const DataService: dataType[] = [
+  // {
+  //   id: 'coaching-sportif-1',
+  //   title: 'Coaching Sportif Personnalisé',
+  //   image: 'src',
+  //   imageAlt: 'src3',
+  //   Description: 'Programme d’entraînement adapté à vos objectifs.',
+  //   price: '50€ / séance',
+  //   categories: ['sport'],
+  // },
   {
-    id: 'coaching-sportif',
-    title: 'Coaching Sportif Personnalisé',
-    image: 'src',
-    imageAlt: 'src3',
-    shortDescription: 'Programme d’entraînement adapté à vos objectifs.',
-    bigDescription:
-      ' Big descriptions Programme d’entraînement adapté à vos objectifs.',
-    longDescription:
-      'Profitez d’un coaching sportif sur-mesure avec un suivi régulier, adapté à votre niveau et vos objectifs (prise de masse, perte de poids, remise en forme).',
-    price: '50€ / séance',
-  },
-  {
-    id: 'coaching-nutrition',
+    id: 'coaching-nutrition-1',
     title: 'Coaching Nutritionnel',
-    image: 'src',
+    image: '/nutrition.jpg',
     imageAlt: 'src3',
-    shortDescription: 'Plan alimentaire personnalisé et suivi hebdomadaire.',
-    bigDescription:
-      'big descriptions Plan alimentaire personnalisé et suivi hebdomadaire.',
-    longDescription:
-      'Élaborez un plan nutritionnel sain et durable, adapté à vos besoins physiologiques, vos objectifs et vos contraintes alimentaires.',
-    price: '70€ / mois',
+    Description: 'Plan alimentaire personnalisé et suivi hebdomadaire.',
+    price: '200€ / Plan Nutritionnel',
+    categories: ['nutrition'],
   },
-  {
-    id: 'coaching-en-ligne',
-    title: 'Coaching en ligne',
-    image: 'src',
-    imageAlt: 'src3',
-    shortDescription: 'Suivi à distance via une application dédiée.',
-    bigDescription:
-      ' big descriptions Suivi à distance via une application dédiée.',
-    longDescription:
-      'Recevez des programmes, vidéos et conseils directement sur votre mobile. Idéal pour les personnes autonomes avec un emploi du temps chargé.',
-    price: '40€ / mois',
-  },
+  // {
+  //   id: 'coaching-en-ligne-1',
+  //   title: 'Coaching en ligne',
+  //   image: 'src',
+  //   imageAlt: 'src3',
+  //   Description: 'Suivi à distance via une application dédiée.',
+  //   price: '40€ / séance',
+  //   categories: ['sport'],
+  // },
+  //   {
+  //   id: 'coaching-en-ligne-2',
+  //   title: 'Coaching en ligne',
+  //   image: 'src',
+  //   imageAlt: 'src3',
+  //   Description: 'Suivi à distance via une application dédiée.',
+  //   price: '40€ / séance',
+  //   categories: ['bien-être'],
+  // },
 ];
