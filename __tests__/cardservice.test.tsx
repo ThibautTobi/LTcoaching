@@ -12,7 +12,6 @@ const mockService: dataType = {
   Description: 'Un accompagnement sportif personnalisé.',
   image: '/img/sport.jpg',
   imageAlt: 'Image sport',
-  liste: [''],
   categories: ['sport'],
   price: '50€',
 };

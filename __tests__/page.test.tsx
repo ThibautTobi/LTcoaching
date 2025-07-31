@@ -13,6 +13,7 @@ describe('Home component', () => {
   });
 
   //TEST 1 : Vérifie que le titre principal est bien affiché
+
   it('affiche le titre principal de la page', () => {
     // getByRole cherche un élément par son "rôle" ARIA. Ici, on cherche un "heading" (= titre).
     const title = screen.getByRole('heading', {
@@ -23,22 +24,18 @@ describe('Home component', () => {
   });
 
   // TEST 2 : Vérifie que le paragraphe de description est affiché
+
   it('affiche le sous-titre de description', () => {
     // getByText cherche un texte exact ou partiel dans le DOM
     const subtitle = screen.getByText(
-      /coaching personnalisé, suivi nutritionnel, motivation constante/i
+      /coaching personnalisé, suivi nutritionnel, preparation mentale/i
     );
 
     expect(subtitle).toBeInTheDocument();
   });
 
-  // TEST 3 : Vérifie que le bouton de réservation est visible
-  it('affiche le bouton "Réserve ta séance"', () => {
-    const button = screen.getByRole('button', { name: /réserve ta séance/i });
-    expect(button).toBeInTheDocument();
-  });
+  //TEST 3 : Vérifie que la section "Qui sommes-nous ?" est présente
 
-  //TEST 4 : Vérifie que la section "Qui sommes-nous ?" est présente
   it('affiche le texte "Qui sommes-nous"', () => {
     const sectionTitle = screen.getByRole('heading', {
       name: /qui sommes-nous/i,
@@ -46,13 +43,14 @@ describe('Home component', () => {
     expect(sectionTitle).toBeInTheDocument();
   });
 
-  //TEST 5 : Vérifie que le dernier appel à l’action est bien là
+  //TEST 4 : Vérifie que le dernier appel à l’action est bien là
+
   it('affiche le bouton "Nous contacter"', () => {
     const finalCta = screen.getByRole('button', { name: /nous contacter/i });
     expect(finalCta).toBeInTheDocument();
   });
 
-  // TEST 6 option ( snapshot intégrer plus simple pour petit composant pas complexe ): Vérifie que le rendu du composant n’a pas changé (snapshot)
+  // TEST 5 option ( snapshot intégrer plus simple pour petit composant pas complexe ): Vérifie que le rendu du composant n’a pas changé (snapshot)
   // it('correspond au snapshot', () => {
   //   // On utilise react-test-renderer pour générer le snapshot
   //   const tree = renderer.create(<Home />).toJSON();

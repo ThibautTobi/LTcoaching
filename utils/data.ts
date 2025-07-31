@@ -11,15 +11,15 @@ export type dataType = {
 };
 
 export const DataService: dataType[] = [
-  // {
-  //   id: 'coaching-sportif-1',
-  //   title: 'Coaching Sportif Personnalisé',
-  //   image: 'src',
-  //   imageAlt: 'src3',
-  //   Description: 'Programme d’entraînement adapté à vos objectifs.',
-  //   price: '50€ / séance',
-  //   categories: ['sport'],
-  // },
+  {
+    id: 'coaching-sportif-1',
+    title: 'Coaching Sportif Personnalisé',
+    image: '/coaching-personalise.jpg',
+    imageAlt: 'src3',
+    Description: 'Programme d’entraînement adapté à vos objectifs.',
+    price: '50€ / séance',
+    categories: ['sport'],
+  },
   {
     id: 'coaching-nutrition-1',
     title: 'Coaching Nutritionnel',

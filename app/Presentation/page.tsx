@@ -24,15 +24,32 @@
 
 'use client';
 
-import Link from 'next/link';
-import { Button } from '@/src/components/ui/button';
-import { LucideMapPin, LucideBookOpen } from 'lucide-react';
-import Image from 'next/image';
+import CoachProfileCard from '@/app/src/components/coachCard';
 
-export default function Presentation() {
+/**
+ * @file Presentation.tsx
+ * @description Ce composant présente les profils de coachs sportifs avec leurs informations détaillées :
+ *              nom, image, description, formations, spécialités, expériences et un bouton de contact.
+ *              Il intègre également le composant réutilisable `CoachProfileCard`.
+ *
+ * @component
+ * @returns {JSX.Element} Une section de présentation visuelle des coachs, avec mise en forme responsive.
+ *
+ * @example
+ * // Utilisation dans une page Next.js
+ * <Presentation />
+ *
+ * @remarks
+ * - Utilise des composants UI personnalisés : `Button`, `CoachProfileCard`, `Lucide icons`.
+ * - Utilise Next.js pour le routage (`Link`) et le chargement d'image (`Image`).
+ * - Le composant contient un coach affiché manuellement en HTML + un coach via `CoachProfileCard`.
+ *   Cela peut servir à comparer ou tester deux approches d'intégration (statique vs dynamique).
+ */
+
+export default function Presentation(): JSX.Element {
   return (
     <div className="min-h-screen to-muted text-foreground">
-      <section className="py-16 px-4 max-w-6xl mx-auto space-y-20">
+      <section className="py-16 px-8 max-w-6xl mx-auto space-y-20">
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-bold text-primary">
             Découvrez nos coachs
@@ -43,141 +60,19 @@ export default function Presentation() {
           </p>
         </div>
 
-        {/* COACH 1 */}
-        <article className="flex flex-col md:flex-row items-center gap-8 bg-card shadow-xl p-8 rounded-2xl transition-transform hover:scale-105 duration-300 ease-in-out">
-          <div className="md:w-1/2 text-center">
-            <Image
-              src="/"
-              alt="Photo de Laurent T., coach sportif"
-              width={256}
-              height={256}
-              className="rounded-full object-cover border-4 border-primary mx-auto"
-            />
-          </div>
-          <div className="md:w-1/2 space-y-4">
-            <h2 className="text-3xl font-bold text-primary">Laurent T.</h2>
-            <p className="text-muted-foreground text-justify">
-              Coach sportif diplômé avec plus de 10 ans d&apos;expérience,
-              spécialisé en prise de masse myofibrillaire et coaching
-              sur-mesure. Il vous accompagne avec précision et motivation, en
-              présentiel ou à distance.
-            </p>
-
-            {/* Formations */}
-            <div>
-              <h3 className="font-semibold text-lg">Formations :</h3>
-              <ul
-                className="space-y-1 text-sm"
-                aria-label="Formations de Laurent"
-              >
-                <li className="flex items-center gap-2">
-                  <LucideBookOpen className="w-4 h-4 text-primary" /> BPJEPS AF
-                  - Haltérophilie/Musculation
-                </li>
-                <li className="flex items-center gap-2">
-                  <LucideBookOpen className="w-4 h-4 text-primary" />{' '}
-                  Certification en nutrition du sport
-                </li>
-              </ul>
-            </div>
-
-            {/* Salles */}
-            <div>
-              <h3 className="font-semibold text-lg">Salles :</h3>
-              <ul
-                className="space-y-1 text-sm"
-                aria-label="Salles de coaching de Laurent"
-              >
-                <li className="flex items-center gap-2">
-                  <LucideMapPin className="w-4 h-4 text-primary" /> Basic-Fit –
-                  Le Havre
-                </li>
-                <li className="flex items-center gap-2">
-                  <LucideMapPin className="w-4 h-4 text-primary" /> Foyer Rural
-                  – Val-de-Saâne
-                </li>
-              </ul>
-            </div>
-
-            <Link href="/Contact">
-              <Button variant="outline" className="mt-4">
-                Prendre rendez-vous
-              </Button>
-            </Link>
-          </div>
-        </article>
-
-        {/* COACH 2 */}
-        <article className="flex flex-col md:flex-row-reverse items-center gap-8 bg-primary/10 shadow-lg p-8 rounded-2xl transition-transform hover:scale-105 duration-300 ease-in-out">
-          <div className="md:w-1/2 text-center">
-            <Image
-              src="/"
-              alt="Photo de Marion B., coach bien-être"
-              width={256}
-              height={256}
-              className="rounded-full object-cover border-4 border-primary mx-auto"
-            />
-          </div>
-          <div className="md:w-1/2 space-y-4">
-            <h2 className="text-3xl font-bold text-primary">Marion B.</h2>
-            <p className="text-muted-foreground text-justify">
-              Spécialiste du bien-être féminin, Marion propose des séances
-              personnalisées avec une approche douce et efficace, adaptée à
-              toutes les étapes de la vie : renforcement, post-partum, mobilité.
-            </p>
-
-            {/* Formations */}
-            <div>
-              <h3 className="font-semibold text-lg">Formations :</h3>
-              <ul
-                className="space-y-1 text-sm"
-                aria-label="Formations de Marion"
-              >
-                <li className="flex items-center gap-2">
-                  <LucideBookOpen className="w-4 h-4 text-primary" /> Licence
-                  STAPS - APA Santé
-                </li>
-                <li className="flex items-center gap-2">
-                  <LucideBookOpen className="w-4 h-4 text-primary" /> Pilates &
-                  Yoga thérapeutique
-                </li>
-              </ul>
-            </div>
-
-            {/* Salles */}
-            <div>
-              <h3 className="font-semibold text-lg">Salles :</h3>
-              <ul
-                className="space-y-1 text-sm"
-                aria-label="Salles de coaching de Marion"
-              >
-                <li className="flex items-center gap-2">
-                  <LucideMapPin className="w-4 h-4 text-primary" /> Studio
-                  Pilates – Yvetot
-                </li>
-                <li className="flex items-center gap-2">
-                  <LucideMapPin className="w-4 h-4 text-primary" /> Coaching à
-                  domicile
-                </li>
-              </ul>
-            </div>
-
-            <Link href="/Contact">
-              <Button variant="outline" className="mt-4">
-                Découvrir ses séances
-              </Button>
-            </Link>
-          </div>
-        </article>
-
-        {/* Appel à l’action final */}
-        <div className="text-center pt-12 animate-fade-in">
-          <Link href="/contact">
-            <Button className="px-8 py-3 rounded-full text-base shadow-md hover:bg-primary/90">
-              Contactez-nous
-            </Button>
-          </Link>
-        </div>
+        <CoachProfileCard
+          name="Laurent T."
+          image="/images.png"
+          imageAlt="Photo de Laurent T., coach sportif"
+          description="Coach sportif diplômé avec plus de 10 ans d'expérience, spécialisé en prise de masse myofibrillaire et coaching sur-mesure. Il vous accompagne avec précision et motivation, en présentiel ou à distance."
+          formations={[
+            'BPJEPS AF - Haltérophilie/Musculation',
+            'Certification en nutrition',
+          ]}
+          specialites={['Nutrition']}
+          experiences={['Association Gym – Val-de-Saâne']}
+          showContact={true}
+        />
       </section>
     </div>
   );

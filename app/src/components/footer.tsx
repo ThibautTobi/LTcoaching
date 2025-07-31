@@ -63,12 +63,12 @@ export default function Footer(): JSX.Element {
               contact@gmail.com
             </a>
           </p>
-          <p>
+          {/* <p>
             Téléphone :{' '}
             <a href="tel:0600000000" className="hover:text-primary transition">
               06 00 00 00 00
             </a>
-          </p>
+          </p> */}
 
           <div className="flex space-x-6 mt-4 flex-row justify-start">
             <a
