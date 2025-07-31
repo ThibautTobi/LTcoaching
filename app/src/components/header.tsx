@@ -4,6 +4,7 @@
  * Gère l'affichage du menu responsive (desktop & mobile).
  */
 
+import Link from 'next/link';
 import NavBar from './navBar';
 import Image from 'next/image';
 
@@ -14,17 +15,21 @@ import Image from 'next/image';
 
 export default function Header() {
   return (
-    <header className="w-full bg-background sticky top-0 z-50 border-b-2 border-primary mb-10">
+    <header className="w-full bg-background sticky top-0 z-50 border-b-2 border-primary">
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="text-xl font-bold">
-          <Image
-            src="/LTcoaching-sansBG.png"
-            width={80}
-            height={80}
-            alt="Logo LTcoaching"
-          />
+          <Link href="/" aria-label="acceuil">
+            <Image
+              src="/LTcoaching-sansBG.png"
+              width={80}
+              height={80}
+              alt="Logo LTcoaching"
+              priority
+            />
+          </Link>
         </div>
+        <p className="italic text-xs">Sport Bien-être Nutrition</p>
         <NavBar />
       </div>
     </header>
