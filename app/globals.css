@@ -43,20 +43,6 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-  .recaptcha-container .g-recaptcha {
-    transform: scale(0.7); /* ou même plus petit, par exemple, 0.65 */
-    transform-origin: 0 0; /* S'assure qu'il se met à l'échelle à partir du coin supérieur gauche */
-  }
-}
-
-@media (min-width: 769px) {
-  .recaptcha-container .g-recaptcha {
-    transform: scale(1);
-    transform-origin: 0 0;
-  }
-}
-
 @layer base {
   * {
     @apply border-border;

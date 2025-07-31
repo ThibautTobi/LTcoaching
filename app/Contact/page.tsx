@@ -9,14 +9,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/src/components/ui/select';
-
-import {
   Form,
   FormControl,
   FormField,
@@ -31,16 +23,15 @@ import { Button } from '@/src/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/src/components/ui/alert';
 
 /**
- * Schéma de validation du formulaire de contact.
- * Utilise `zod` pour valider les champs saisis par l'utilisateur.
+ * Schéma de validation du formulaire de contact avec Zod.
  *
- * Champs :
- * - nom : requis, minimum 2 caractères
- * - prénom : requis, minimum 2 caractères
- * - genre : optionnel, valeur 'Homme', 'Femme' ou vide
- * - téléphone : optionnel, exactement 10 chiffres
- * - email : requis, format email valide
- * - message : requis, minimum 10 caractères
+ * @typedef {Object} ContactFormData
+ * @property {string} nom - Nom de l'utilisateur (min. 2 caractères)
+ * @property {string} prenom - Prénom de l'utilisateur (min. 2 caractères)
+ * @property {'Homme' | 'Femme' | ''} [genre] - Genre sélectionné
+ * @property {string} [telephone] - Numéro de téléphone (10 chiffres)
+ * @property {string} email - Adresse email valide
+ * @property {string} message - Contenu du message (min. 10 caractères)
  */
 
 const contactSchema = z.object({
@@ -59,15 +50,9 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 /**
- * Composant de page de contact.
+ * Composant React de page de contact.
  *
- * Affiche un formulaire de contact avec :
- * - champs nom, prénom, genre, téléphone, email, message
- * - validation via `react-hook-form` et `zod`
- * - protection anti-spam avec Google reCAPTCHA
- * - envoi de l'email via `EmailJS`
- *
- * Affiche également une alerte de succès ou d'erreur selon la réponse.
+ * @returns {JSX.Element} Formulaire de contact avec validation, reCAPTCHA et envoi via EmailJS.
  */
 
 export default function ContactPage() {
@@ -88,15 +73,16 @@ export default function ContactPage() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   /**
-   * Gère la soumission du formulaire de contact.
+   * Fonction asynchrone de gestion de la soumission du formulaire.
    *
    * Étapes :
    * 1. Récupère le token reCAPTCHA
-   * 2. Vérifie sa présence
-   * 3. Envoie les données du formulaire à EmailJS
-   * 4. Affiche une alerte de succès ou d'erreur
+   * 2. Valide sa présence
+   * 3. Envoie les données à EmailJS avec reCAPTCHA
+   * 4. Gère les états de succès ou d'erreur
    *
    * @param {ContactFormData} data - Données validées du formulaire
+   * @returns {Promise<void>}
    */
 
   const onSubmit = async (data: ContactFormData) => {
@@ -136,13 +122,13 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center px-4 py-8 sm:px-6 lg:px-8 max-w-2xl mx-auto">
+    <section className="flex flex-col items-center justify-center px-8 py-8 sm:px-6 lg:px-8 max-w-2xl mx-auto">
       <h1 className="text-xl font-bold text-center text-[#C6A35E] m-6">
         Contactez-nous
       </h1>
 
       {/* informations Champs Obligatoires */}
-      <p className="text-primary text-center font-light mb-8">
+      <p className="text-primary text-center font-light mb-10">
         * Champs Obligatoires
       </p>
 
@@ -202,7 +188,7 @@ export default function ContactPage() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-2 w-full max-w-md p-6 bg-card border border-border rounded-2xl shadow-[0_0_30px_rgba(198,163,94,0.3)]"
+          className="space-y-2 w-full max-w-md p-6 bg-card border border-border rounded-2xl hover:scale-105 hover:shadow-[0_0_30px_rgba(198,163,94,0.3)]"
         >
           {/* Champ Nom */}
           <FormField
@@ -253,30 +239,21 @@ export default function ContactPage() {
               <FormItem>
                 <FormLabel className="text-primary text-sm">Genre</FormLabel>
                 <FormControl>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
+                  <select
+                    {...field}
+                    className="w-full bg-input text-black rounded-xl px-4 py-2 border border-primary focus:ring-2 focus:ring-primary/60"
                   >
-                    <SelectTrigger className="w-full bg-input text-black rounded-xl px-4 py-2 border border-primary focus:ring-2 focus:ring-primary/60 justify-between">
-                      <SelectValue placeholder="Choisissez votre genre" />
-                    </SelectTrigger>
-                    <SelectContent className="min-w-[var(--radix-select-trigger-width)] bg-input border border-primary text-black shadow-lg rounded-xl w-full">
-                      <SelectItem
-                        value="Homme"
-                        className="hover:bg-primary/50 rounded-xl text-center p-2"
-                      >
-                        Homme
-                      </SelectItem>
-                      <SelectItem
-                        value="Femme"
-                        className="hover:bg-primary/50 rounded-xl text-center p-2"
-                      >
-                        Femme
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
+                    <option value="" disabled>
+                      Choisissez votre genre
+                    </option>
+                    <option value="Homme" className="text-center">
+                      Homme
+                    </option>
+                    <option value="Femme" className="text-center">
+                      Femme
+                    </option>
+                  </select>
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -298,7 +275,6 @@ export default function ContactPage() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -345,9 +321,8 @@ export default function ContactPage() {
           />
 
           {/* reCAPTCHA */}
-          <div className="flex justify-center recaptcha-container p-2">
+          <div className="w-full flex justify-center scale-75 sm:scale-100">
             <ReCAPTCHA
-              className="mx-auto"
               ref={recaptchaRef}
               sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
             />
@@ -357,7 +332,8 @@ export default function ContactPage() {
           <Button
             variant="outline"
             type="submit"
-            className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/80 shadow-lg px-6 py-2 mx-auto block transition"
+            //className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/80 shadow-lg px-6 py-2 mx-auto block transition"
+            className="mt-6 block mx-auto font-bold bg-primary text-card rounded-xl hover:scale-105 hover:bg-primary/70"
           >
             Envoyer
           </Button>
