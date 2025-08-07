@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Facebook, Instagram } from 'lucide-react';
 
 /**
@@ -14,11 +15,16 @@ export default function Footer(): JSX.Element {
       <div className="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo et description */}
         <div>
-          <h4 className="text-primary font-bold text-lg mb-2">LT coaching</h4>
-          <p>
-            Coaching personnalisé pour améliorer votre santé et votre bien-être,
-            à votre rythme.
-          </p>
+          <Link href="/" aria-label="acceuil">
+            <Image
+              src="/LTcoaching-sansBG.png"
+              width={80}
+              height={80}
+              alt="Logo LTcoaching"
+              priority
+            />
+          </Link>
+          <p>Sport Bien-être Nutrition.</p>
         </div>
 
         {/* Liens de navigation */}
@@ -57,10 +63,10 @@ export default function Footer(): JSX.Element {
           <p>
             Email :{' '}
             <a
-              href="mailto:contact@monsite.fr"
+              href="mailto:ltcoaching.contact@gmail.com"
               className="hover:text-primary transition"
             >
-              contact@gmail.com
+              ltcoaching.contact@gmail.com
             </a>
           </p>
           {/* <p>
@@ -72,7 +78,7 @@ export default function Footer(): JSX.Element {
 
           <div className="flex space-x-6 mt-4 flex-row justify-start">
             <a
-              href="https://facebook.com"
+              href="https://facebook.com/profile.php?id=100078540893893"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -81,7 +87,7 @@ export default function Footer(): JSX.Element {
               <Facebook size={20} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/ltcoaching.sportnutrition?utm_source=qrnigsh=aDViNW4yZ2gyMGpi"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"

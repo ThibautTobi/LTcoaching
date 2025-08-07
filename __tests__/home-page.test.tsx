@@ -28,7 +28,7 @@ describe('Home component', () => {
   it('affiche le sous-titre de description', () => {
     // getByText cherche un texte exact ou partiel dans le DOM
     const subtitle = screen.getByText(
-      /coaching personnalisé, suivi nutritionnel, preparation mentale/i
+      /coaching personnalisé, suivi nutritionnel, préparation mentale/i
     );
 
     expect(subtitle).toBeInTheDocument();

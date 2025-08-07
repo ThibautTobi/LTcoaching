@@ -23,7 +23,7 @@ export default function Home() {
           <span className="text-primary">LTcoaching</span>
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-          Coaching personnalisé, suivi nutritionnel, preparation mentale.
+          Coaching personnalisé, suivi nutritionnel, préparation mentale.
           <br />
           Des coachs diplômés à tes côtés, pour atteindre tes objectifs.
         </p>
@@ -34,8 +34,9 @@ export default function Home() {
           Qui sommes-nous ?
         </h2>
         <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-          Deux Coachs sportif diplômé avec plus de 7 ans d&apos;expérience, nous
-          allons t&apos;aider à transformer ton corps et ton mental.
+          Deux Coachs sportifs diplômés avec plus de 7 ans d&apos;expérience.
+          <br />
+          Nous allons t&apos;aider à transformer ton corps et ton mental.
           <br />
           Que tu veuilles perdre du poids, prendre du muscle, améliorer des
           qualités physiques specifique, preparation de concours ou tests
