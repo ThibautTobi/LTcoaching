@@ -39,7 +39,7 @@ exports[`Home component snapshot tests correspond au snapshot 1`] = `
       <p
         class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
       >
-        Coaching personnalisé, suivi nutritionnel, preparation mentale.
+        Coaching personnalisé, suivi nutritionnel, préparation mentale.
         <br />
         Des coachs diplômés à tes côtés, pour atteindre tes objectifs.
       </p>
@@ -55,7 +55,9 @@ exports[`Home component snapshot tests correspond au snapshot 1`] = `
       <p
         class="text-muted-foreground text-lg max-w-3xl mx-auto"
       >
-        Deux Coachs sportif diplômé avec plus de 7 ans d'expérience, nous allons t'aider à transformer ton corps et ton mental.
+        Deux Coachs sportifs diplômés avec plus de 7 ans d'expérience.
+        <br />
+        Nous allons t'aider à transformer ton corps et ton mental.
         <br />
         Que tu veuilles perdre du poids, prendre du muscle, améliorer des qualités physiques specifique, preparation de concours ou tests physiques ou améliorer ta santé global.
         <br />

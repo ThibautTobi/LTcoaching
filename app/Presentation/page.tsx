@@ -59,20 +59,36 @@ export default function Presentation(): JSX.Element {
             transformation physique et mentale.
           </p>
         </div>
-
         <CoachProfileCard
-          name="Laurent T."
+          name="Laure"
           image="/images.png"
-          imageAlt="Photo de Laurent T., coach sportif"
-          description="Coach sportif diplômé avec plus de 10 ans d'expérience, spécialisé en prise de masse myofibrillaire et coaching sur-mesure. Il vous accompagne avec précision et motivation, en présentiel ou à distance."
+          imageAlt="Photo de Laure, coach sportif"
+          description="Coach sportif diplômé avec plus de 7 ans d'expérience, spécialisé en bien être et nutrition. Professeur de yoga et pilate. Reflexologue pour adulte et nourrison."
           formations={[
-            'BPJEPS AF - Haltérophilie/Musculation',
-            'Certification en nutrition',
+            'BPJEPS AF - Haltérophilie/Musculation et Cours Collectifs',
+            'Coach en nutrition',
+            'Professeur de yoga',
+            'Reflexologue plantaire,palmaire et crânienne',
+            'instructeur LesMills',
           ]}
-          specialites={['Nutrition']}
-          experiences={['Association Gym – Val-de-Saâne']}
+          specialites={['Nutrition', 'Sport Santé', 'Bien-être']}
           showContact={true}
         />
+        {/* <CoachProfileCard
+          name="Thibaut"
+          image="/images.png"
+          imageAlt="Photo de thibaut, coach sportif"
+          description="Coach sportif diplômé avec plus de 7 ans d'expérience, spécialisé en bien être et nutrition. Professeur de yoga et pilate. Reflexologue pour adulte et nourrison."
+          formations={[
+            'BPJEPS AF - Haltérophilie/Musculation et Cours Collectifs',
+            'Coach en nutrition',
+            'Professeur de yoga',
+            'Reflexologue plantaire,palmaire et crânienne',
+            'instructeur LesMills'
+          ]}
+          specialites={['Nutrition','Sport Santé','Bien-être']}
+          showContact={true}
+        /> */}
       </section>
     </div>
   );

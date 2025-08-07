@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { LucideBookOpen, LucideMapPin, Trophy } from 'lucide-react';
+import { LucideBookOpen, Trophy } from 'lucide-react';
 import { Button } from '@/src/components/ui/button';
 
 type CoachProfileCardProps = {
@@ -10,7 +10,6 @@ type CoachProfileCardProps = {
   description: string;
   formations: string[];
   specialites: string[];
-  experiences: string[];
   showContact?: boolean;
 };
 
@@ -21,7 +20,6 @@ export default function CoachProfileCard({
   description,
   formations,
   specialites,
-  experiences,
   showContact = true,
 }: CoachProfileCardProps) {
   return (
@@ -69,23 +67,6 @@ export default function CoachProfileCard({
                 <li key={i} className="flex items-center gap-2">
                   <Trophy className="w-4 h-4 text-primary" />
                   {spec}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {/* Expériences */}
-        {experiences.length > 0 && (
-          <div>
-            <h3 className="font-semibold text-lg mb-2">
-              Expériences professionnelles en salles :
-            </h3>
-            <ul className="space-y-1 text-sm">
-              {experiences.map((exp, i) => (
-                <li key={i} className="flex items-center gap-2">
-                  <LucideMapPin className="w-4 h-4 text-primary" />
-                  {exp}
                 </li>
               ))}
             </ul>

@@ -72,6 +72,7 @@ export default function ServicesPage() {
             <CardService
               DataService={data}
               showDescription={true}
+              showListe={false}
               showLink={true}
               showImage={true}
               showPrice={false}
