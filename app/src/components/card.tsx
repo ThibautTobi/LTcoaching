@@ -25,38 +25,46 @@ import Image from 'next/image';
 export const CardService = ({
   DataService,
   showDescription = false,
+  showListe = false,
   showLink = false,
   showImage = false,
   showPrice = false,
 }: {
   DataService: dataType;
   showDescription?: boolean;
+  showListe?: boolean;
   showLink?: boolean;
   showImage?: boolean;
   showPrice?: boolean;
 }) => {
   return (
-    <Card className="bg-[#26262a] border border-primary shadow-primary rounded-xl p-4 transition-all">
+    <Card className="bg-[#26262a] border border-primary shadow-primary rounded-xl p-4 transition-all flex flex-col w-full h-full">
       <CardTitle className="text-xl font-semibold text-primary p-4 text-center">
         {DataService.title}
       </CardTitle>
-      <CardContent className="text-[#D8D8D8] text-sm">
+      <CardContent className="text-[#D8D8D8] text-sm flex-1 flex flex-col items-center justify-between">
         {showImage && (
-          <div className="w-full flex justify-center ">
+          <div className="relative w-[200px] h-[200px] sm:w-[170px] sm:h-[170px] md:w-[220px] md:h-[220px] ">
             <Image
               src={DataService.image}
-              width={200}
-              height={200}
+              fill
               alt={DataService.imageAlt}
-              className="rounded-2xl object-cover sm:w-42 sm:h-42 md:w-50 md:h-50 shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+              className="rounded-2xl object-cover shadow-[0_0_40px_rgba(255,255,255,0.2)]"
             />
           </div>
         )}
         {showDescription && (
-          <p className="text-center p-4">{DataService.Description}</p>
+          <p className="text-left pt-6">{DataService.Description}</p>
+        )}
+        {showListe && (
+          <ul className="p-6">
+            {DataService.liste.map((item, index) => (
+              <li key={index}>* {item}</li>
+            ))}
+          </ul>
         )}
         {showPrice && (
-          <p className="text-primary font-bold text-center p-4">
+          <p className="text-primary font-bold text-center py-4">
             {DataService.price}
           </p>
         )}

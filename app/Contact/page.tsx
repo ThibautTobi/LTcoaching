@@ -17,6 +17,14 @@ import {
   FormMessage,
 } from '@/src/components/ui/form';
 
+// import {
+//   Select,
+//   SelectTrigger,
+//   SelectContent,
+//   SelectItem,
+//   SelectValue,
+// } from '@/src/components/ui/select';
+
 import { Input } from '@/src/components/ui/input';
 import { Textarea } from '@/src/components/ui/textarea';
 import { Button } from '@/src/components/ui/button';
@@ -37,12 +45,15 @@ import { Alert, AlertTitle, AlertDescription } from '@/src/components/ui/alert';
 const contactSchema = z.object({
   nom: z.string().min(2, 'Le nom est requis'),
   prenom: z.string().min(2, 'Le prénom est requis'),
-  genre: z.enum(['Homme', 'Femme']).optional().or(z.literal('')),
+  genre: z.enum(['Homme', 'Femme']).or(z.literal('')).optional(),
   telephone: z
     .string()
-    .regex(/^\d{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres')
-    .optional(),
-
+    .min(1, 'Le numéro de téléphone est requis')
+    .transform((val) => val.replace(/\D/g, ''))
+    .refine(
+      (val) => val.length === 10,
+      'Le numéro doit contenir exactement 10 chiffres'
+    ),
   email: z.string().email('Email invalide'),
   message: z.string().min(10, 'Message trop court'),
 });
@@ -56,6 +67,8 @@ type ContactFormData = z.infer<typeof contactSchema>;
  */
 
 export default function ContactPage() {
+  const [isSending, setIsSending] = useState(false);
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -70,7 +83,7 @@ export default function ContactPage() {
 
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
   /**
    * Fonction asynchrone de gestion de la soumission du formulaire.
@@ -94,7 +107,8 @@ export default function ContactPage() {
       setError('Veuillez valider le reCAPTCHA.');
       return;
     }
-    setError('');
+    setError(null);
+    setIsSending(true);
     try {
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -103,7 +117,7 @@ export default function ContactPage() {
           nom: data.nom,
           prenom: data.prenom,
           genre: data.genre || 'non specifié',
-          telephone: data.telephone || 'non specifié',
+          telephone: data.telephone,
           reply_to: data.email,
           message: data.message,
           'g-recaptcha-response': recaptchaToken,
@@ -112,12 +126,14 @@ export default function ContactPage() {
       );
 
       setSubmitted(true);
-      setError('');
+      setError(null);
       form.reset();
       recaptchaRef.current?.reset();
     } catch (err) {
       setError('Une erreur est survenue, veuillez réessayer.');
       console.error(err);
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -187,6 +203,7 @@ export default function ContactPage() {
 
       <Form {...form}>
         <form
+          aria-label="formulaire de contact"
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-2 w-full max-w-md p-6 bg-card border border-border rounded-2xl hover:scale-105 hover:shadow-[0_0_30px_rgba(198,163,94,0.3)]"
         >
@@ -257,6 +274,30 @@ export default function ContactPage() {
               </FormItem>
             )}
           />
+          {/* dois modifier le composant pour corriger bug d'affichage et colorie personnalisé */}
+          {/* <FormField
+            control={form.control}
+            name="genre"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-primary text-sm">Genre</FormLabel>
+                <FormControl>
+                  <Select
+                    value={field.value}
+                    onValueChange={field.onChange}
+                  >
+                    <SelectTrigger className="w-full rounded-xl border border-primary bg-input px-4 py-2 focus:ring-2 focus:ring-primary/60">
+                      <SelectValue placeholder="Choisissez votre genre" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Homme">Homme</SelectItem>
+                      <SelectItem value="Femme">Femme</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+              </FormItem>
+            )}
+          /> */}
 
           {/* Champ Telephone */}
           <FormField
@@ -265,7 +306,7 @@ export default function ContactPage() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-primary text-sm">
-                  Téléphone
+                  Téléphone *
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -275,6 +316,7 @@ export default function ContactPage() {
                     {...field}
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -332,10 +374,13 @@ export default function ContactPage() {
           <Button
             variant="outline"
             type="submit"
+            disabled={isSending}
+            aria-busy={isSending}
+            aria-disabled={isSending}
             //className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/80 shadow-lg px-6 py-2 mx-auto block transition"
             className="mt-6 block mx-auto font-bold bg-primary text-card rounded-xl hover:scale-105 hover:bg-primary/70"
           >
-            Envoyer
+            {isSending ? 'Envoi...' : 'Envoyer'}
           </Button>
         </form>
       </Form>
