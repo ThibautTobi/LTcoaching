@@ -8,9 +8,15 @@ describe('Home Page', () => {
     render(<Home />);
 
     // Vérifie que le titre est affiché
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('test');
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'Atteins tes objectifs avec LTcoaching'
+    );
 
     // Vérifie que le paragraphe est affiché
-    expect(screen.getByText(/Lorem ipsum/)).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Coaching personnalisé, suivi nutritionnel, préparation mentale.\s*Des coachs diplômés à tes côtés, pour atteindre tes objectifs./
+      )
+    ).toBeInTheDocument();
   });
 });

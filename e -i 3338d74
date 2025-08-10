@@ -1,0 +1,77 @@
+[33mfe5f231[m[33m ([m[1;36mHEAD -> [m[1;32mDev[m[33m, [m[1;32mmaster[m[33m)[m résolution des conflits de la branche dev manuellement
+[33m3338d74[m[33m ([m[1;31morigin/Dev[m[33m)[m avancement du projet. test lighthouse et seo a venir avec finalisation du contenue final pour version 1. push avant merge
+[33mf07cf2b[m test de la page contact a modifier et page contact un changement d'input a finir avant
+[33m12155b2[m modification du projet avant integration des bonnes data et finalisation seo et optimisation
+[33m6490070[m modification temporaire de la data pour test et dataType
+[33mad537f6[m ajout d'images  dans public
+[33md14aad4[m integration site map de next
+[33ma50fc4a[m creation config site map
+[33m57f61b2[m modification et correction d'erreur blocante pour la pull request
+[33m28ee7fa[m modification de l'import de l'image logo pour eviter probleme de typage
+[33m2a3dd53[m creation eslinignore / site v1 non terminer
+[33mddeb9f0[m modification de la page contact ( bug dans l'input  select la fleche supperpose a non  reste a corriger )
+[33m9d6bacc[m suppression de page / la page presentation remplace la page hero
+[33m0200d6b[m modification de la page home
+[33m9e09f44[m modification de la page presentation / commentaire d'idées pour ameliorer la page
+[33m4153c9d[m modification du composant card
+[33m4ce8303[m integration du logo
+[33m5bd92e5[m correction taille recaptcha sur mobile
+[33m1edac58[m modification page tarifs ( dois etre retravaillé )
+[33mc17d970[m composant shadcn select
+[33m051bd4c[m modification de la data local
+[33m0dc3fac[m ajout logo officiel
+[33mbd0c2ea[m ajout composant shadcn select
+[33mfaaf8d2[m instalation composant select de shadcn
+[33mb08983f[m ajout de types jest et node
+[33maa7ef36[m mise a jour pour corrgier des compatibiliter de test sur les composant de lucide qui intervienne avec shadcn
+[33mf00f2b2[m mise a jour
+[33m266f8f5[m ajout des clés privés
+[33m895bd35[m modification du composant Footer de la page.
+[33m4cd2521[m modification du composant Header de la page.
+[33m22debbb[m modification du composant NavBar
+[33md8fccad[m creation d'une page dynamique qui recupere un id et génére la page service avec plus d'informations
+[33mae5b5cd[m creation de la page services avec integration du composant personnaliser CardService
+[33m650d40c[m creation de la page presentation.
+[33ma33144b[m ajouts de composant shadcn au projets
+[33m597e223[m creation d'une data test pour le developpement du site.
+[33mb4626da[m suppression de la page dans le repertoire des composants. pas necessaire pour la premiere version du site.
+[33m8fc524c[m suppression de la page dans le repertoire des composants.
+[33m8cab0da[m suppression de la page dans le repertoire des composants.
+[33me18479c[m suppression de la page dans le fichier des composants, creation page complet
+[33m4cf3a74[m suppression de la page blog , pas necessaire pour la premiere version du site
+[33m0868bf2[m supression de la page a propos
+[33meed1ef8[m création formulaire de la page de contact. utilisation de emailjs / recaptcha v2 / zod / userform
+[33m5653b5b[m modification de la page d'acceuil en cours
+[33m9656037[m création de la page erreur personnalisé du site.
+[33m1920c75[m modification du desing/theme  par default :root et ajout de modification taille recaptcha pour petit ecran
+[33m378716e[m Ajout de nouvelles biblioteques
+[33m4ab1b09[m Ajout de nouvelles biblioteques
+[33me56c2ed[m creation d'un  fichier .env pour les clés secret
+[33m5a5dcf9[m création des differentes pages structure / contenue header et navbar sans mise en page
+[33m54eda09[m fin de configuration husky lint-staged
+[33m0391251[m fin de test
+[33mb3ac266[m test configuration husky /lint-staged
+[33ma628c14[m test bug husky
+[33m08aa2d6[m création contenue page Hero : test husky lint
+[33m774f691[m installation et configuration de husky
+[33m70bd2b8[m commit push avant reinstallation husky
+[33m81a2a3f[m correction et build
+[33m4db6201[m[33m ([m[1;31morigin/master[m[33m)[m Dev (#2) configuration ci / cd . reste husky a intégrer
+[33ma536994[m Merge branch 'master' into Dev
+[33m2e44fd7[m changement couleur theme shadcn
+[33m1e78067[m test ajout element shadcn test
+[33mce75812[m creation du workflows GitHub / creation Branch "Dev" (#1)
+[33m2201f14[m configuration ci et test validé / reste husky v 9 + lint-staged a intégrer
+[33me0b5150[m desinstalation de Husky temporairement
+[33m8b5e305[m test ESLint et Prettier
+[33m72416b9[m test erreur dans page
+[33m8d894bf[m test erreur TS
+[33m4939b7f[m test erreur TS
+[33m6ff2858[m test erreur TS
+[33m55d52f0[m test husky v 9
+[33m256d051[m configuration du ci . avant configuration Husky
+[33m5e8c7b1[m creation du workflows GitHub / creation Branch "Dev"
+[33mbababde[m Ajout mode stric et Ajout possibiliter futur de configuration
+[33m7c27ff7[m Ajout de jest et test effectuer pour verifier le bon fonctionnement de jest.
+[33m7abbac9[m premiere creation de composant /commit debut de configuration CI CD
+[33m3d3f8ae[m Initial commit from Create Next App
