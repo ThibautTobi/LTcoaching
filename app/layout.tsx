@@ -16,45 +16,55 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Coaching Sportif Personnalisé – LT Coaching',
+  title:
+    'Coaching Sportif Personnalisé à Villers-Écalles et Barentin – LT Coaching',
   description:
-    'LT Coaching ,Coaching sportif sur-mesure à Villers-Écalles, Barentin et à distance. Musculation, nutrition, préparation mentale et coaching d’entreprise.',
+    'Coaching sportif sur-mesure à Villers-Écalles, Barentin et en ligne. Musculation, nutrition, yoga, pilate, reflexiologie, préparation mentale et coaching d’entreprise par LT Coaching.',
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'android-chrome', url: '/android-chrome-192x192.png' },
+      { rel: 'android-chrome', url: '/android-chrome-512x512.png' },
+    ],
+  },
   keywords: [
     'coaching sportif Villers-Écalles',
     'coach sportif Barentin',
-    'programme musculation',
-    'nutrition personnalisée',
-    'préparation mentale',
-    'coaching entreprise',
-    'coaching test concours',
+    'programme musculation personnalisé',
+    'nutrition sportive',
+    'cours de yoga',
+    'cours de pilate',
+    'reflexiologie',
+    'préparation mentale athlètes',
+    'coaching entreprise bien-être',
+    'préparation concours sportifs',
     'small group training',
-    'coach personnel à distance',
+    'coaching à distance en ligne',
   ],
-  authors: [{ name: 'LT Coaching' }],
+  authors: [{ name: 'LT Coaching', url: 'https://www.tonsite.com' }],
   openGraph: {
-    title: 'Coaching Sportif à Villers-Écalles & Online',
+    title: 'LT Coaching – Coaching Sportif à Villers-Écalles et Barentin',
     description:
-      'Transforme ton corps et ton mental avec un coaching complet. En présentiel ou à distance.',
+      'Transforme ton corps et ton mental avec un coaching sur-mesure, en présentiel ou en ligne.',
     locale: 'fr_FR',
     type: 'website',
     // a changer
     url: 'https://www.tonsite.com',
     images: [
       {
-        // a changer
-        url: 'https://www.tonsite.com/opengraph-image.jpg',
+        url: 'https://www.tonsite.com/og-ltcoaching.webp',
         width: 1200,
         height: 630,
-        alt: 'Coach sportif Barentin en action',
+        alt: 'Coach sportif LT Coaching en séance à Villers-Écalles et Barentin',
       },
     ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Coaching Sportif Personnalisé',
-    description: 'Coach sportif à Villers-Écalles, Barentin et en ligne.',
-    // a changer
-    images: ['https://www.tonsite.com/twitter-image.jpg'],
   },
 };
 
@@ -63,8 +73,41 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  //  informations a finaliser et changer l'adresse final
+  const schemaOrganization = {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'SportsActivityLocation'],
+    '@id': 'https://www.tonsite.com/#ltcoaching',
+    name: 'LTcoaching',
+    image: 'https://www.tonsite.com/logo-google-ltcoaching.png',
+    logo: 'https://www.tonsite.com/LTcoaching-sansBG.png',
+    url: 'https://www.tonsite.com',
+    // "telephone": "+33 000000000",
+    email: 'ltcoaching.contact@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Villers-Écalles',
+      postalCode: '76360',
+      addressCountry: 'FR',
+    },
+    openingHours: 'Mo-Su 00:00-23:59',
+    sameAs: [
+      'https://facebook.com/profile.php?id=100078540893893',
+      'https://instagram.com/ltcoaching.sportnutrition',
+    ],
+    areaServed: ['Villers-Écalles', 'Barentin', 'Périphérie'],
+  };
+
   return (
     <html lang="fr">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaOrganization),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
