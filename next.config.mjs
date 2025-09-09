@@ -3,13 +3,21 @@ const nextConfig = {
   reactStrictMode: true,
 
   eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
+    //   // Warning: This allows production builds to successfully complete even if
+    //   // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+
   /***  possibiliter futur pour le projet a etudier si besoin ***/
 
-  // swcMinify: true,
+  // Active la minification moderne via SWC
+  swcMinify: true,
+
+  // Active l’output moderne (évite de charger du JS legacy pour rien)
+  experimental: {
+    esmExternals: true, // externalisation en ESM
+    forceSwcTransforms: true, // force les transformations modernes
+  },
 
   //   images: {
   // domains: ["cdn.sanity.io", "images.unsplash.com"],
@@ -88,6 +96,29 @@ const nextConfig = {
   //       },
   //     ];
   //   },
+
+  // autre exemple headers de sécurité (tu peux décommenter si besoin)
+  /*
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "X-Powered-By", value: "Next.js 15 💪 Coaching Pro" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+          { key: "X-XSS-Protection", value: "1; mode=block" },
+          {
+            key: "Content-Security-Policy",
+            value: "default-src 'self'; script-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline'; img-src * data:;"
+          },
+          { key: "Permissions-Policy", value: "interest-cohort=()" },
+        ],
+      },
+    ];
+  },
+  */
 };
 
 export default nextConfig;
