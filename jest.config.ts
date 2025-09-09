@@ -13,13 +13,13 @@ const config: Config = {
   transformIgnorePatterns: ['/node_modules/(?!(lucide-react)/)'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
-    '^lucide-react$': '<rootDir>/__mocks__/lucide-react.ts',
     '\\.(css|scss|sass)$': 'identity-obj-proxy',
   },
 
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
 
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'], // Cette ligne est cruciale : elle indique à Jest de ne pas ignorer la transformation
+  // des modules "lucide-react" et d'autres potentiellement nécessaires.
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async

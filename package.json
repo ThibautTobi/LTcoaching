@@ -7,25 +7,25 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "check:types": "tsc --noEmit",
     "postbuild": "next-sitemap"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "npm run lint",
-      "npm run format"
+      "eslint --fix",
+      "prettier --write"
     ],
     "*.{css,scss,json,md,tsx}": [
-      "npm run format"
+      "prettier --write"
     ],
     "*.ts,tsx": [
-      "npm run check:types"
+      "tsc --noEmit"
     ]
   },
   "dependencies": {

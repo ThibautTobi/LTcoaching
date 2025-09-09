@@ -6,6 +6,9 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  {
+    ignores: ['.next/*', 'node_modules/*', 'dist/*', 'coverage/*'],
+  },
   ...compat.config({
     extends: ['next', 'prettier'],
   }),

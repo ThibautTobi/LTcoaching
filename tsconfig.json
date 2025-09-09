@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -27,7 +28,14 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "__tests__/.env.contact-page.test.tsx"
+    "__tests__/.env.contact-page.test.tsx",
+    "__tests__/page.test.tsx.ignore",
+    "__tests__/presentation-page.test.tsx",
+    "__tests__/tarif-page.test.tsx",
+    "__tests__/service-page.test.tsx",
+    "__tests__/card-composant.test.tsx",
+    "__tests__/footer-composant.test.tsx",
+    "__tests__/contact-page.test.tsx"
   ],
   "exclude": ["node_modules"]
 }
