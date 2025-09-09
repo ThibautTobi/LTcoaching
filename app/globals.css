@@ -11,8 +11,6 @@ body {
     text-wrap: balance;
   }
 }
-/* couleur a modifier */
-/* primary: 64.14 58% 37% (doré) */
 
 @layer base {
   :root {
@@ -49,5 +47,28 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1 {
+    @apply text-3xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+
+  h4 {
+    @apply text-lg font-medium;
+  }
+
+  h5 {
+    @apply text-base font-medium;
+  }
+
+  h6 {
+    @apply text-sm font-medium;
   }
 }
