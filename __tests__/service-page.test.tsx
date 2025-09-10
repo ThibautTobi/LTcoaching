@@ -103,13 +103,14 @@
 //     expect(screen.getAllByTestId('card')).toHaveLength(4);
 //   });
 // });
-
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import ServicesPage from '@/app/Services/page';
 import { dataType } from '@/utils/data';
 
-// Mock propre de DataService
+// --- 🔹 MOCKS ---
+// Mock de DataService
 jest.mock('@/utils/data', () => ({
   DataService: [
     {
@@ -155,14 +156,14 @@ jest.mock('@/utils/data', () => ({
   ] satisfies dataType[],
 }));
 
-// Typage du composant mocké CardService
+// Mock de CardService
 jest.mock('@/app/src/components/card', () => ({
   CardService: ({ DataService }: { DataService: dataType }) => (
     <div data-testid="card">{DataService.title}</div>
   ),
 }));
 
-// Typage simple du bouton
+// Mock du bouton UI
 jest.mock('@/src/components/ui/button', () => ({
   Button: ({
     children,
@@ -172,13 +173,13 @@ jest.mock('@/src/components/ui/button', () => ({
   }) => <button {...rest}>{children}</button>,
 }));
 
-// Tests
+// --- 🔹 TESTS ---
 describe('ServicesPage Component', () => {
   it('affiche le titre principal', () => {
     render(<ServicesPage />);
     expect(
       screen.getByRole('heading', {
-        name: /Nos Services de Coaching & Nutrition/i,
+        name: /Nos Services de Coaching Sportif, Nutrition & Bien-être/i,
       })
     ).toBeInTheDocument();
   });
@@ -201,7 +202,7 @@ describe('ServicesPage Component', () => {
   it('filtre les services par catégorie', () => {
     render(<ServicesPage />);
 
-    // Filtre "sport"
+    // --- Filtre sport ---
     fireEvent.click(screen.getByRole('button', { name: /sport/i }));
     let visibleCards = screen
       .getAllByTestId('card')
@@ -211,13 +212,32 @@ describe('ServicesPage Component', () => {
     );
     expect(visibleCards).toHaveLength(2);
 
-    // Filtre "bien-être"
+    // --- Filtre bien-être ---
     fireEvent.click(screen.getByRole('button', { name: /bien-être/i }));
     visibleCards = screen.getAllByTestId('card').map((el) => el.textContent);
     expect(visibleCards).toEqual(['Massage Bien-être']);
 
-    // Filtre "tous"
+    // --- Filtre nutrition ---
+    fireEvent.click(screen.getByRole('button', { name: /nutrition/i }));
+    visibleCards = screen.getAllByTestId('card').map((el) => el.textContent);
+    expect(visibleCards).toEqual(
+      expect.arrayContaining(['Conseil Nutrition', 'Pack Complet'])
+    );
+
+    // --- Filtre tous ---
     fireEvent.click(screen.getByRole('button', { name: /tous/i }));
     expect(screen.getAllByTestId('card')).toHaveLength(4);
+  });
+
+  it('le bouton sélectionné doit avoir une classe spécifique', () => {
+    render(<ServicesPage />);
+    const sportButton = screen.getByRole('button', { name: /sport/i });
+    fireEvent.click(sportButton);
+    expect(sportButton).toHaveClass('font-semibold'); // adapte selon ta vraie classe
+  });
+
+  it('correspond au snapshot', () => {
+    const { asFragment } = render(<ServicesPage />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Home page snapshot tests devrait correspondre à un snapshot stable 1`] = `
+exports[`Home Page doit correspondre au snapshot (pour prévenir les régressions UI) 1`] = `
 <DocumentFragment>
   <main
     class="min-h-screen bg-background text-foreground"
