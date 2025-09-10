@@ -18,7 +18,7 @@ export default function Home() {
       </div>
 
       <section className="w-full py-10 px-6 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-[24px] font-bold md:text-5xl mb-4">
           Atteins tes objectifs avec{' '}
           <span className="text-primary">LTcoaching</span>
         </h1>

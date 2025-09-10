@@ -22,8 +22,7 @@
 
  */
 
-'use client';
-
+import { Metadata } from 'next';
 import CoachProfileCard from '@/app/src/components/coachCard';
 
 /**
@@ -46,49 +45,133 @@ import CoachProfileCard from '@/app/src/components/coachCard';
  *   Cela peut servir à comparer ou tester deux approches d'intégration (statique vs dynamique).
  */
 
+export const metadata: Metadata = {
+  title: 'Nos coachs sportifs – LTcoaching | Experts en fitness et bien-être',
+  description:
+    "Découvrez Laure et Thibaut, coachs sportifs diplômés avec plus de 7 ans d'expérience. Spécialistes en préparation physique, nutrition, bien-être et sport santé.",
+  openGraph: {
+    title: 'Nos coachs sportifs – LTcoaching',
+    description:
+      "Rencontrez notre équipe de coachs diplômés : préparation physique, nutrition, bien-être, sport santé. Plus de 7 ans d'expérience pour vous accompagner.",
+    images: ['/og-ltcoaching.webp'],
+  },
+};
+
+// modifier les chemins avec l'adresse du site publier et intégrer des image des coachs
+
 export default function Presentation(): JSX.Element {
   return (
     <div className="min-h-screen to-muted text-foreground">
+      {/* Schema.org pour Laure */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Laure',
+            jobTitle: 'Coach sportif, professeure de yoga et réflexologue',
+            image: 'https://www.tonsite.com/laure-coach-sportif.png',
+            description:
+              "Coach sportif diplômée avec plus de 7 ans d'expérience, spécialisée en nutrition, bien-être et sport santé.",
+            alumniOf:
+              'BPJEPS AF – Haltérophilie/Musculation et Cours Collectifs',
+            knowsAbout: [
+              'Nutrition',
+              'Sport Santé',
+              'Bien-être',
+              'Yoga',
+              'Pilates',
+            ],
+            worksFor: {
+              '@type': 'Organization',
+              name: 'LTcoaching',
+            },
+          }),
+        }}
+      />
+
+      {/* Schema.org pour Thibaut */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Thibaut',
+            jobTitle:
+              'Coach sportif spécialisé en préparation physique et mentale',
+            image: 'https://www.tonsite.com/thibaut-preparation-physique.png',
+            description:
+              "Coach sportif diplômé avec plus de 7 ans d'expérience, spécialisé en préparation physique, mentale et sport santé.",
+            alumniOf:
+              'BPJEPS AF – Haltérophilie/Musculation et Cours Collectifs',
+            knowsAbout: [
+              'Préparation physique',
+              'Préparation mentale',
+              'Sport Santé',
+              'Bien-être',
+            ],
+            worksFor: {
+              '@type': 'Organization',
+              name: 'LTcoaching',
+            },
+          }),
+        }}
+      />
+
       <section className="py-16 px-8 max-w-6xl mx-auto space-y-20">
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold text-primary">
-            Découvrez nos coachs
+          <h1 className="text-[24px] font-bold text-primary">
+            Découvrez nos coachs sportifs professionnels
           </h1>
           <p className="text-muted-foreground text-lg">
-            Des professionnels passionnés pour vous accompagner dans votre
-            transformation physique et mentale.
+            LTcoaching vous accompagne dans votre transformation physique et
+            mentale
+            <br />
+            grâce à l’expertise de nos coachs diplômés, passionnés par le sport,
+            la santé et le bien-être.
           </p>
         </div>
         <CoachProfileCard
           name="Laure"
           image="/images.png"
-          imageAlt="Photo de Laure, coach sportif"
-          description="Coach sportif diplômé avec plus de 7 ans d'expérience, spécialisé en bien être et nutrition. Professeur de yoga et pilate. Reflexologue pour adulte et nourrison."
+          imageAlt="Laure, coach sportif experte en yoga, nutrition et bien-être"
+          description="Coach sportif diplômée avec plus de 7 ans d'expérience, spécialisée dans le bien-être, la nutrition et la remise en forme. Professeure de yoga et de pilates, elle est également réflexologue plantaire, palmaire et crânienne pour adultes et nourrissons."
           formations={[
             'BPJEPS AF - Haltérophilie/Musculation et Cours Collectifs',
             'Coach en nutrition',
             'Professeur de yoga',
-            'Reflexologue plantaire,palmaire et crânienne',
-            'instructeur LesMills',
+            'Réflexologue plantaire, palmaire et crânienne',
+            'Instructrice LesMills',
           ]}
-          specialites={['Nutrition', 'Sport Santé', 'Bien-être']}
+          specialites={[
+            'Nutrition',
+            'Sport Santé',
+            'Bien-être',
+            'Yoga',
+            'Pilates',
+          ]}
           showContact={true}
         />
-        {/* <CoachProfileCard
+        <CoachProfileCard
           name="Thibaut"
           image="/images.png"
-          imageAlt="Photo de thibaut, coach sportif"
-          description="Coach sportif diplômé avec plus de 7 ans d'expérience, spécialisé en bien être et nutrition. Professeur de yoga et pilate. Reflexologue pour adulte et nourrison."
+          imageAlt="Thibaut, coach sportif spécialisé en préparation physique et mentale"
+          description="Coach sportif diplômé avec plus de 7 ans d'expérience, spécialisé en préparation physique, préparation aux tests et concours, ainsi qu’en préparation mentale. Instructeur certifié LesMills, il enseigne le BodyPump, le RPM, le BodyBalance, le BodyAttack et le BodyCombat."
           formations={[
             'BPJEPS AF - Haltérophilie/Musculation et Cours Collectifs',
-            'Coach en nutrition',
-            'Professeur de yoga',
-            'Reflexologue plantaire,palmaire et crânienne',
-            'instructeur LesMills'
+            'Certification en préparation mentale',
+            'Instructeur LesMills',
           ]}
-          specialites={['Nutrition','Sport Santé','Bien-être']}
+          specialites={[
+            'Préparation mentale',
+            'Préparation physique',
+            'Sport Santé',
+            'Bien-être',
+          ]}
           showContact={true}
-        /> */}
+        />
       </section>
     </div>
   );

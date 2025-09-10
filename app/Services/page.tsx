@@ -30,9 +30,18 @@ export default function ServicesPage() {
 
   return (
     <section className="max-w-5xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold text-center text-[#C6A35E] mb-8">
-        Nos Services de Coaching & Nutrition
+      <h1 className="text-[24px] font-bold text-center text-[#C6A35E] mb-8">
+        Nos Services de Coaching Sportif, Nutrition & Bien-être
       </h1>
+
+      <p className="text-center max-w-2xl mx-auto mb-10 text-gray-300">
+        LT Coaching vous accompagne dans votre transformation physique et
+        mentale.
+        <br />
+        Découvrez nos services sur mesure adaptés à vos objectifs :<br /> perte
+        de poids, prise de masse, amélioration des performances, bien-être et
+        équilibre alimentaire.
+      </p>
 
       {/* Boutons de filtre */}
       <div className="flex justify-center gap-4 mb-8 flex-wrap">
@@ -72,7 +81,7 @@ export default function ServicesPage() {
             <CardService
               DataService={data}
               showDescription={true}
-              showListe={false}
+              showListe={true}
               showLink={true}
               showImage={true}
               showPrice={false}
