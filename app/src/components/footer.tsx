@@ -12,6 +12,9 @@ import { Facebook, Instagram } from 'lucide-react';
 export default function Footer(): JSX.Element {
   return (
     <footer className="w-full bg-background border-t-2 border-primary mt-10 py-8 text-[#D8D8D8] text-sm">
+      <h2 className="text-[24px] text-muted-foreground font-bold text-center italic mb-6">
+        Sport Bien-être Nutrition
+      </h2>
       <div className="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo et description */}
         <div>
@@ -29,7 +32,7 @@ export default function Footer(): JSX.Element {
 
         {/* Liens de navigation */}
         <div>
-          <h4 className="text-primary font-bold text-lg mb-2">Liens utiles</h4>
+          <h3 className="text-primary font-bold text-lg mb-2">Liens utiles</h3>
           <ul className="space-y-1">
             <li>
               <Link
@@ -59,7 +62,7 @@ export default function Footer(): JSX.Element {
 
         {/* Contact et Réseaux sociaux */}
         <div>
-          <h4 className="text-primary font-bold text-lg mb-2">Contact</h4>
+          <h3 className="text-primary font-bold text-lg mb-2">Contact</h3>
           <p>
             Email :{' '}
             <a

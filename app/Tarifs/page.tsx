@@ -43,7 +43,7 @@ export default function TarifsPage() {
   return (
     <section className="max-w-4xl mx-auto py-12 px-4">
       {/* Titre principal */}
-      <h1 className="text-3xl font-bold text-center text-[#C6A35E] mb-6">
+      <h1 className="text-[24px] font-bold text-center text-[#C6A35E] mb-6">
         Tarifs
       </h1>
       {/* composant de Filtre des services */}

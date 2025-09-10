@@ -2,8 +2,7 @@
 
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import ReCAPTCHA from 'react-google-recaptcha';
-
+import ReCAPTCHA, { ReCAPTCHA as ReCAPTCHATypes } from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -17,31 +16,12 @@ import {
   FormMessage,
 } from '@/src/components/ui/form';
 
-// import {
-//   Select,
-//   SelectTrigger,
-//   SelectContent,
-//   SelectItem,
-//   SelectValue,
-// } from '@/src/components/ui/select';
-
 import { Input } from '@/src/components/ui/input';
 import { Textarea } from '@/src/components/ui/textarea';
 import { Button } from '@/src/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/src/components/ui/alert';
 
-/**
- * Schéma de validation du formulaire de contact avec Zod.
- *
- * @typedef {Object} ContactFormData
- * @property {string} nom - Nom de l'utilisateur (min. 2 caractères)
- * @property {string} prenom - Prénom de l'utilisateur (min. 2 caractères)
- * @property {'Homme' | 'Femme' | ''} [genre] - Genre sélectionné
- * @property {string} [telephone] - Numéro de téléphone (10 chiffres)
- * @property {string} email - Adresse email valide
- * @property {string} message - Contenu du message (min. 10 caractères)
- */
-
+/** Schéma de validation du formulaire de contact avec Zod */
 const contactSchema = z.object({
   nom: z.string().min(2, 'Le nom est requis'),
   prenom: z.string().min(2, 'Le prénom est requis'),
@@ -60,14 +40,10 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-/**
- * Composant React de page de contact.
- *
- * @returns {JSX.Element} Formulaire de contact avec validation, reCAPTCHA et envoi via EmailJS.
- */
-
 export default function ContactPage() {
   const [isSending, setIsSending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -81,25 +57,10 @@ export default function ContactPage() {
     },
   });
 
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
-
-  /**
-   * Fonction asynchrone de gestion de la soumission du formulaire.
-   *
-   * Étapes :
-   * 1. Récupère le token reCAPTCHA
-   * 2. Valide sa présence
-   * 3. Envoie les données à EmailJS avec reCAPTCHA
-   * 4. Gère les états de succès ou d'erreur
-   *
-   * @param {ContactFormData} data - Données validées du formulaire
-   * @returns {Promise<void>}
-   */
+  const recaptchaRef = useRef<ReCAPTCHATypes>(null);
 
   const onSubmit = async (data: ContactFormData) => {
-    console.log('from :', data);
+    console.log('Formulaire envoyé  :', data);
 
     const recaptchaToken = recaptchaRef.current?.getValue();
 
@@ -107,8 +68,10 @@ export default function ContactPage() {
       setError('Veuillez valider le reCAPTCHA.');
       return;
     }
+
     setError(null);
     setIsSending(true);
+
     try {
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -139,16 +102,21 @@ export default function ContactPage() {
 
   return (
     <section className="flex flex-col items-center justify-center px-8 py-8 sm:px-6 lg:px-8 max-w-2xl mx-auto">
-      <h1 className="text-xl font-bold text-center text-[#C6A35E] m-6">
+      <h1 className="text-[24px] font-bold text-center text-[#C6A35E] m-6">
         Contactez-nous
       </h1>
 
-      {/* informations Champs Obligatoires */}
-      <p className="text-primary text-center font-light mb-10">
-        * Champs Obligatoires
+      <p className="text-mute text-center font-light mb-10">
+        Vous avez des questions, besoin d’un accompagnement personnalisé ou
+        souhaitez prendre rendez-vous ?
+        <br />
+        Notre équipe de coachs sportifs à Villers-Ecalles est à votre écoute.
+        <br />
+        Remplissez ce formulaire de contact, nous vous répondrons rapidement.
+        <br />
+        <br />* Champs Obligatoires
       </p>
 
-      {/* informations modale si erreur ou reussite de l'envoi */}
       {submitted && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <Alert className="bg-card text-primary border-4 border-primary rounded-xl max-w-md w-full mx-4 shadow-xl">
@@ -158,12 +126,10 @@ export default function ContactPage() {
             <AlertDescription className="text-center px-4 pb-4">
               Merci ! Votre message a été envoyé avec succès.
             </AlertDescription>
-
-            {/* Bouton Fermer */}
             <div className="flex justify-center pb-2">
               <Button
                 variant="outline"
-                className="bg-destructive text-white  hover:bg-destructive/80 rounded-xl"
+                className="bg-destructive text-white hover:bg-destructive/80 rounded-xl"
                 onClick={() => setSubmitted(false)}
               >
                 Fermer
@@ -185,13 +151,10 @@ export default function ContactPage() {
             <AlertDescription className="text-center px-4 pb-4">
               {error}
             </AlertDescription>
-
-            {/* Bouton Fermer */}
-
             <div className="flex justify-center pb-2">
               <Button
                 variant="outline"
-                className="bg-destructive text-white  hover:bg-destructive/80 rounded-xl"
+                className="bg-destructive text-white hover:bg-destructive/80 rounded-xl"
                 onClick={() => setError(null)}
               >
                 Fermer
@@ -217,8 +180,8 @@ export default function ContactPage() {
                 <FormControl>
                   <Input
                     placeholder="Votre nom"
-                    className="rounded-xl bg-input text-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition w-full"
                     {...field}
+                    className="rounded-xl bg-input text-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition w-full"
                   />
                 </FormControl>
                 <FormMessage />
@@ -232,15 +195,12 @@ export default function ContactPage() {
             name="prenom"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-primary text-sm">
-                  {' '}
-                  Prénom *
-                </FormLabel>
+                <FormLabel className="text-primary text-sm">Prénom *</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Votre Prénom"
-                    className="rounded-xl bg-input text-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition w-full"
                     {...field}
+                    className="rounded-xl bg-input text-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition w-full"
                   />
                 </FormControl>
                 <FormMessage />
@@ -248,7 +208,7 @@ export default function ContactPage() {
             )}
           />
 
-          {/* Champ selction du Genre */}
+          {/* Champ Genre */}
           <FormField
             control={form.control}
             name="genre"
@@ -274,30 +234,6 @@ export default function ContactPage() {
               </FormItem>
             )}
           />
-          {/* dois modifier le composant pour corriger bug d'affichage et colorie personnalisé */}
-          {/* <FormField
-            control={form.control}
-            name="genre"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary text-sm">Genre</FormLabel>
-                <FormControl>
-                  <Select
-                    value={field.value}
-                    onValueChange={field.onChange}
-                  >
-                    <SelectTrigger className="w-full rounded-xl border border-primary bg-input px-4 py-2 focus:ring-2 focus:ring-primary/60">
-                      <SelectValue placeholder="Choisissez votre genre" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Homme">Homme</SelectItem>
-                      <SelectItem value="Femme">Femme</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-              </FormItem>
-            )}
-          /> */}
 
           {/* Champ Telephone */}
           <FormField
@@ -312,8 +248,8 @@ export default function ContactPage() {
                   <Input
                     type="tel"
                     placeholder="Votre numéro de téléphone"
-                    className="rounded-xl bg-input text-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition w-full"
                     {...field}
+                    className="rounded-xl bg-input text-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition w-full"
                   />
                 </FormControl>
                 <FormMessage />
@@ -331,8 +267,8 @@ export default function ContactPage() {
                 <FormControl>
                   <Input
                     placeholder="Votre email"
-                    className="rounded-xl bg-input text-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition w-full"
                     {...field}
+                    className="rounded-xl bg-input text-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition w-full"
                   />
                 </FormControl>
                 <FormMessage />
@@ -352,9 +288,9 @@ export default function ContactPage() {
                 <FormControl>
                   <Textarea
                     placeholder="Votre message"
+                    {...field}
                     className="rounded-xl bg-input text-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary transition w-full resize-none"
                     rows={5}
-                    {...field}
                   />
                 </FormControl>
                 <FormMessage />
@@ -377,7 +313,6 @@ export default function ContactPage() {
             disabled={isSending}
             aria-busy={isSending}
             aria-disabled={isSending}
-            //className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/80 shadow-lg px-6 py-2 mx-auto block transition"
             className="mt-6 block mx-auto font-bold bg-primary text-card rounded-xl hover:scale-105 hover:bg-primary/70"
           >
             {isSending ? 'Envoi...' : 'Envoyer'}

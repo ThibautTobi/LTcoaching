@@ -54,12 +54,16 @@ export const CardService = ({
           </div>
         )}
         {showDescription && (
-          <p className="text-left pt-6">{DataService.Description}</p>
+          <p className="text-left pt-6" style={{ whiteSpace: 'pre-line' }}>
+            {DataService.Description}
+          </p>
         )}
         {showListe && (
-          <ul className="p-6">
+          <ul className="pt-4 font-semibold text-center">
             {DataService.liste.map((item, index) => (
-              <li key={index}>* {item}</li>
+              <li key={index} className="p-2 text-primary">
+                * {item}
+              </li>
             ))}
           </ul>
         )}
