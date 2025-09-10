@@ -1,110 +1,129 @@
-// import React from 'react';
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import TarifsPage from '@/app/Tarifs/page';
-
-// // On mocke DataService pour contrôler ce qui est affiché
-// jest.mock('@/utils/data', () => ({
-//   DataService: [
-//     {
-//       id: 1,
-//       title: 'Coaching Sportif',
-//       categories: ['sport'],
-//       description: 'Un coaching personnalisé',
-//       price: 50,
-//       image: '/sport.jpg',
-//     },
-//     {
-//       id: 2,
-//       title: 'Programme Nutrition',
-//       categories: ['nutrition'],
-//       description: 'Plan alimentaire sur mesure',
-//       price: 40,
-//       image: '/nutrition.jpg',
-//     },
-//   ],
-// }));
-
-// // On mocke CardService pour vérifier son appel sans devoir tester son rendu complet
-// jest.mock('@/app/src/components/card', () => ({
-//   CardService: ({ DataService }: any) => (
-//     <div data-testid="card-service">{DataService.title}</div>
-//   ),
-// }));
-
-// // On mocke FilterBar pour simuler le changement de filtre
-// jest.mock('@/app/src/components/filterComposant', () => ({
-//   FilterBar: ({ filters, selectedFilter, onChange }: any) => (
-//     <div>
-//       {filters.map((filter: string) => (
-//         <button
-//           key={filter}
-//           data-testid={`filter-${filter}`}
-//           onClick={() => onChange(filter)}
-//         >
-//           {filter}
-//         </button>
-//       ))}
-//       <div>Filtre actuel: {selectedFilter}</div>
-//     </div>
-//   ),
-// }));
-
-// describe('TarifsPage', () => {
-//   it('affiche le titre et toutes les cartes au chargement', () => {
-//     render(<TarifsPage />);
-
-//     // Vérifie le titre
-//     expect(
-//       screen.getByRole('heading', { name: /Tarifs/i })
-//     ).toBeInTheDocument();
-
-//     // Vérifie que les deux services sont affichés
-//     expect(screen.getByText(/Coaching Sportif/i)).toBeInTheDocument();
-//     expect(screen.getByText(/Programme Nutrition/i)).toBeInTheDocument();
-//   });
-
-//   it('filtre les services par catégorie', () => {
-//     render(<TarifsPage />);
-
-//     // Au départ les 2 sont visibles
-//     expect(screen.getAllByTestId('card-service')).toHaveLength(2);
-
-//     // Clique sur "sport"
-//     fireEvent.click(screen.getByTestId('filter-sport'));
-
-//     // Seul le coaching sportif doit rester
-//     expect(screen.getAllByTestId('card-service')).toHaveLength(1);
-//     expect(screen.getByText(/Coaching Sportif/i)).toBeInTheDocument();
-//     expect(screen.queryByText(/Programme Nutrition/i)).not.toBeInTheDocument();
-//   });
-
-//   it('revient à tous les services quand on sélectionne "tous"', () => {
-//     render(<TarifsPage />);
-
-//     // Filtrer par sport
-//     fireEvent.click(screen.getByTestId('filter-sport'));
-//     expect(screen.getAllByTestId('card-service')).toHaveLength(1);
-
-//     // Puis revenir à tous
-//     fireEvent.click(screen.getByTestId('filter-tous'));
-//     expect(screen.getAllByTestId('card-service')).toHaveLength(2);
-//   });
-// });
-
-// __tests__/tarif-page.test.tsx
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import TarifsPage from '@/app/Tarifs/page';
+import { render, screen, fireEvent } from '@testing-library/react';
+import TarifsPage from '../app/Tarifs/page';
+import { dataType } from '@/utils/data';
 
-// Mock très simple du module data avec un tableau vide
+// --- 🔹 MOCKS ---
+
+// Mock propre de DataService
 jest.mock('@/utils/data', () => ({
-  __esModule: true,
-  DataService: [],
+  DataService: [
+    {
+      id: '1',
+      title: 'Coaching Sportif',
+      categories: ['sport'],
+      image: '/sport.jpg',
+      imageAlt: 'Coaching Sportif',
+      Description: 'Un coaching personnalisé',
+      liste: ['Objectif', 'Résultat'],
+      price: '50',
+    },
+    {
+      id: '2',
+      title: 'Massage Bien-être',
+      categories: ['bien-être'],
+      image: '/massage.jpg',
+      imageAlt: 'Massage Bien-être',
+      Description: 'Un moment de détente',
+      liste: ['Relaxation', 'Bien-être'],
+      price: '60',
+    },
+    {
+      id: '3',
+      title: 'Conseil Nutrition',
+      categories: ['nutrition'],
+      image: '/nutrition.jpg',
+      imageAlt: 'Conseil Nutrition',
+      Description: 'Des conseils alimentaires adaptés',
+      liste: ['Équilibre', 'Santé'],
+      price: '40',
+    },
+    {
+      id: '4',
+      title: 'Pack Complet',
+      categories: ['sport', 'nutrition'],
+      image: '/pack.jpg',
+      imageAlt: 'Pack Complet',
+      Description: 'Sport + Nutrition pour des résultats rapides',
+      liste: ['Programme sport', 'Suivi nutritionnel'],
+      price: '90',
+    },
+  ] satisfies dataType[],
 }));
 
-describe('TarifsPage', () => {
-  test('affiche le titre Tarifs', () => {
+// Mock du composant CardService
+jest.mock('@/app/src/components/card', () => ({
+  CardService: ({ DataService }: { DataService: dataType }) => (
+    <div data-testid="card">{DataService.title}</div>
+  ),
+}));
+
+// Typage correct pour FilterBar
+type FilterBarProps = {
+  filters: string[];
+  selectedFilter: string;
+  onChange: (filter: string) => void;
+};
+
+// Mock du composant FilterBar
+jest.mock('@/app/src/components/filterComposant', () => ({
+  FilterBar: ({ filters, onChange }: FilterBarProps) => (
+    <div data-testid="filter-bar">
+      {filters.map((filter) => (
+        <button key={filter} onClick={() => onChange(filter)}>
+          {filter}
+        </button>
+      ))}
+    </div>
+  ),
+}));
+
+// --- 🔹 TESTS ---
+describe('TarifsPage Component', () => {
+  it('doit rendre le titre principal et tous les services par défaut', () => {
     render(<TarifsPage />);
-    expect(screen.getByText('Tarifs')).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { name: /Tarifs/i });
+    expect(heading).toBeInTheDocument();
+
+    // Vérifie que toutes les cartes de service sont affichées
+    expect(screen.getAllByTestId('card')).toHaveLength(4);
+  });
+
+  it('doit filtrer les services par catégorie', () => {
+    render(<TarifsPage />);
+
+    // Filtre "sport"
+    fireEvent.click(screen.getByRole('button', { name: /sport/i }));
+    let visibleCards = screen
+      .getAllByTestId('card')
+      .map((el) => el.textContent);
+    expect(visibleCards).toEqual(
+      expect.arrayContaining(['Coaching Sportif', 'Pack Complet'])
+    );
+    expect(visibleCards).toHaveLength(2);
+
+    // Filtre "bien-être"
+    fireEvent.click(screen.getByRole('button', { name: /bien-être/i }));
+    visibleCards = screen.getAllByTestId('card').map((el) => el.textContent);
+    expect(visibleCards).toEqual(expect.arrayContaining(['Massage Bien-être']));
+    expect(visibleCards).toHaveLength(1);
+
+    // Filtre "nutrition"
+    fireEvent.click(screen.getByRole('button', { name: /nutrition/i }));
+    visibleCards = screen.getAllByTestId('card').map((el) => el.textContent);
+    expect(visibleCards).toEqual(
+      expect.arrayContaining(['Conseil Nutrition', 'Pack Complet'])
+    );
+    expect(visibleCards).toHaveLength(2);
+  });
+
+  it('doit réinitialiser les services lorsque le filtre "tous" est cliqué', () => {
+    render(<TarifsPage />);
+
+    fireEvent.click(screen.getByRole('button', { name: /sport/i }));
+    expect(screen.getAllByTestId('card')).toHaveLength(2);
+
+    fireEvent.click(screen.getByRole('button', { name: /tous/i }));
+    expect(screen.getAllByTestId('card')).toHaveLength(4);
   });
 });

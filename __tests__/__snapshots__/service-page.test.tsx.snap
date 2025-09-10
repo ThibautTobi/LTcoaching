@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ServicesPage Component correspond au snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="max-w-5xl mx-auto py-12 px-4"
+  >
+    <h1
+      class="text-[24px] font-bold text-center text-[#C6A35E] mb-8"
+    >
+      Nos Services de Coaching Sportif, Nutrition & Bien-être
+    </h1>
+    <p
+      class="text-center max-w-2xl mx-auto mb-10 text-gray-300"
+    >
+      LT Coaching vous accompagne dans votre transformation physique et mentale.
+      <br />
+      Découvrez nos services sur mesure adaptés à vos objectifs :
+      <br />
+       perte de poids, prise de masse, amélioration des performances, bien-être et équilibre alimentaire.
+    </p>
+    <div
+      class="flex justify-center gap-4 mb-8 flex-wrap"
+    >
+      <button
+        class="flex items-center gap-2 px-4 py-2 rounded-full border transition duration-200 ease-in-out
+          bg-card text-primary font-semibold border-2 border-primary
+        "
+      >
+        <span />
+        <span
+          class="capitalize"
+        >
+          tous
+        </span>
+      </button>
+      <button
+        class="flex items-center gap-2 px-4 py-2 rounded-full border transition duration-200 ease-in-out
+          bg-card border-white text-white hover:bg-[#C6A35E]/20
+        "
+      >
+        <span>
+          🏋️
+        </span>
+        <span
+          class="capitalize"
+        >
+          sport
+        </span>
+      </button>
+      <button
+        class="flex items-center gap-2 px-4 py-2 rounded-full border transition duration-200 ease-in-out
+          bg-card border-white text-white hover:bg-[#C6A35E]/20
+        "
+      >
+        <span>
+          🧘
+        </span>
+        <span
+          class="capitalize"
+        >
+          bien-être
+        </span>
+      </button>
+      <button
+        class="flex items-center gap-2 px-4 py-2 rounded-full border transition duration-200 ease-in-out
+          bg-card border-white text-white hover:bg-[#C6A35E]/20
+        "
+      >
+        <span>
+          🍏
+        </span>
+        <span
+          class="capitalize"
+        >
+          nutrition
+        </span>
+      </button>
+    </div>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    >
+      <div
+        id="1"
+      >
+        <div
+          data-testid="card"
+        >
+          Coaching Sportif
+        </div>
+      </div>
+      <div
+        id="2"
+      >
+        <div
+          data-testid="card"
+        >
+          Massage Bien-être
+        </div>
+      </div>
+      <div
+        id="3"
+      >
+        <div
+          data-testid="card"
+        >
+          Conseil Nutrition
+        </div>
+      </div>
+      <div
+        id="4"
+      >
+        <div
+          data-testid="card"
+        >
+          Pack Complet
+        </div>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
