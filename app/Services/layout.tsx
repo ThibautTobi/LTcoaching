@@ -5,7 +5,7 @@ import { DataService } from '@/utils/data';
 // adapter les adresses
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Services de Coaching Sportif, Bien-être & Nutrition – LT Coaching',
+    title: 'Services – LT Coaching | Coach Sportif, Nutrition & Bien-être',
     description:
       'Découvrez nos services personnalisés : coaching sportif, nutrition, bien-être et préparation mentale. Des programmes adaptés à vos objectifs.',
     keywords: [
@@ -61,7 +61,7 @@ export default function ServicesLayout({
         itemOffered: {
           '@type': 'Service',
           name: service.title,
-          description: service.Description,
+          description: service.description,
           category: service.categories.join(', '),
           image: `https://www.tonsite.com${service.image || '/logo-google-ltcoaching.png'}`,
         },

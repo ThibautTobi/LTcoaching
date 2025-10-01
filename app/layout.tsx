@@ -16,8 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title:
-    'Coaching Sportif Personnalisé à Villers-Écalles et Barentin – LT Coaching',
+  title: 'Acceuil – LT Coaching | Coach Sportif, Nutrition & Bien-être',
   description:
     'Coaching sportif sur-mesure à Villers-Écalles, Barentin et en ligne. Musculation, nutrition, yoga, pilate, reflexiologie, préparation mentale et coaching d’entreprise par LT Coaching.',
   icons: {

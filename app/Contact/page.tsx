@@ -21,7 +21,12 @@ import { Textarea } from '@/src/components/ui/textarea';
 import { Button } from '@/src/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/src/components/ui/alert';
 
-/** Schéma de validation du formulaire de contact avec Zod */
+/**
+ *  Schéma de validation du formulaire de contact avec Zod.
+ * - Vérifie que chaque champ respecte les contraintes (longueur, format, etc.)
+ * - Fournit des messages d'erreur personnalisés
+ */
+
 const contactSchema = z.object({
   nom: z.string().min(2, 'Le nom est requis'),
   prenom: z.string().min(2, 'Le prénom est requis'),
@@ -29,7 +34,7 @@ const contactSchema = z.object({
   telephone: z
     .string()
     .min(1, 'Le numéro de téléphone est requis')
-    .transform((val) => val.replace(/\D/g, ''))
+    .transform((val) => val.replace(/\D/g, '')) // Supprime tout caractère non numérique
     .refine(
       (val) => val.length === 10,
       'Le numéro doit contenir exactement 10 chiffres'
@@ -38,12 +43,36 @@ const contactSchema = z.object({
   message: z.string().min(10, 'Message trop court'),
 });
 
+/**
+ *  Type dérivé automatiquement du schéma Zod.
+ * - Permet d'avoir l'auto-complétion et la sécurité de types dans le code.
+ */
+
 type ContactFormData = z.infer<typeof contactSchema>;
 
+/**
+ *  Page de contact contenant :
+ * - Un formulaire validé par Zod + React Hook Form
+ * - Une vérification ReCAPTCHA
+ * - Un envoi de mail via EmailJS
+ * - Des messages de succès ou d'erreur
+ *
+ * @returns JSX.Element
+ */
+
 export default function ContactPage() {
+  // État pour gérer l'envoi en cours
   const [isSending, setIsSending] = useState(false);
+  // État pour savoir si le formulaire a été soumis avec succès
   const [submitted, setSubmitted] = useState(false);
+  // État pour stocker les erreurs éventuelles
   const [error, setError] = useState<string | null>(null);
+
+  /**
+   * Initialisation de React Hook Form avec :
+   * - Le resolver Zod (qui applique le schéma contactSchema)
+   * - Des valeurs par défaut pour chaque champ
+   */
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -57,22 +86,33 @@ export default function ContactPage() {
     },
   });
 
+  /** Référence vers le composant ReCAPTCHA (pour récupérer et reset le token) */
+
   const recaptchaRef = useRef<ReCAPTCHATypes>(null);
+
+  /**
+   *  Fonction appelée à la soumission du formulaire
+   * @param data Données validées du formulaire
+   */
 
   const onSubmit = async (data: ContactFormData) => {
     console.log('Formulaire envoyé  :', data);
 
+    // Récupération du token ReCAPTCHA
     const recaptchaToken = recaptchaRef.current?.getValue();
 
+    // Si l'utilisateur n'a pas validé le captcha → erreur
     if (!recaptchaToken) {
       setError('Veuillez valider le reCAPTCHA.');
       return;
     }
 
     setError(null);
+    // Active le mode "chargement"
     setIsSending(true);
 
     try {
+      // Envoi du mail avec EmailJS
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
@@ -88,24 +128,30 @@ export default function ContactPage() {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
 
+      // Succès → affichage du message de confirmation
       setSubmitted(true);
+      // Aucune Erreur reste a null
       setError(null);
+      // Reset du formulaire
       form.reset();
+      // Reset du captcha
       recaptchaRef.current?.reset();
     } catch (err) {
+      // Erreur lors de l’envoi
       setError('Une erreur est survenue, veuillez réessayer.');
       console.error(err);
     } finally {
+      // Fin du mode "chargement"
       setIsSending(false);
     }
   };
 
   return (
     <section className="flex flex-col items-center justify-center px-8 py-8 sm:px-6 lg:px-8 max-w-2xl mx-auto">
+      {/* Titre et description */}
       <h1 className="text-[24px] font-bold text-center text-[#C6A35E] m-6">
         Contactez-nous
       </h1>
-
       <p className="text-mute text-center font-light mb-10">
         Vous avez des questions, besoin d’un accompagnement personnalisé ou
         souhaitez prendre rendez-vous ?
@@ -117,6 +163,7 @@ export default function ContactPage() {
         <br />* Champs Obligatoires
       </p>
 
+      {/* Message de succès */}
       {submitted && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <Alert className="bg-card text-primary border-4 border-primary rounded-xl max-w-md w-full mx-4 shadow-xl">
@@ -139,6 +186,7 @@ export default function ContactPage() {
         </div>
       )}
 
+      {/* Message d'erreur */}
       {error && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <Alert
@@ -164,10 +212,11 @@ export default function ContactPage() {
         </div>
       )}
 
+      {/* Formulaire avec React Hook Form */}
       <Form {...form}>
         <form
           aria-label="formulaire de contact"
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit(onSubmit)} // Liaison du submit avec RHF
           className="space-y-2 w-full max-w-md p-6 bg-card border border-border rounded-2xl hover:scale-105 hover:shadow-[0_0_30px_rgba(198,163,94,0.3)]"
         >
           {/* Champ Nom */}
@@ -306,14 +355,14 @@ export default function ContactPage() {
             />
           </div>
 
-          {/* Bouton envoyer */}
+          {/* Bouton envoyer formulaire */}
           <Button
-            variant="outline"
+            variant={'default'}
             type="submit"
             disabled={isSending}
             aria-busy={isSending}
             aria-disabled={isSending}
-            className="mt-6 block mx-auto font-bold bg-primary text-card rounded-xl hover:scale-105 hover:bg-primary/70"
+            className="mt-6 block mx-auto hover:scale-110 hover:bg-primary/70"
           >
             {isSending ? 'Envoi...' : 'Envoyer'}
           </Button>

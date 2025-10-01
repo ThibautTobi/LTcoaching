@@ -2,20 +2,49 @@
 
 import { Button } from '@/src/components/ui/button';
 
+/**
+ * Props du composant `FilterBar`.
+ *
+ * @template T - Type des filtres (doit être une chaîne de caractères).
+ * @typedef {Object} FilterBarProps
+ * @property {readonly T[]} filters - Tableau des filtres disponibles (ex: ['tous', 'sport', 'bien-être']).
+ * @property {T} selectedFilter - Le filtre actuellement sélectionné.
+ * @property {(filter: T) => void} onChange - Fonction callback appelée lorsqu'un filtre est cliqué.
+ * @property {boolean} [showIcons=true] - Détermine si des icônes sont affichées à côté des filtres.
+ * @property {string} [className] - Classes CSS supplémentaires à ajouter au conteneur.
+ */
+
+/**
+ * Composant `FilterBar`
+ *
+ * Affiche une barre de boutons pour filtrer dynamiquement des éléments.
+ * Chaque bouton représente un filtre. Le bouton sélectionné est visuellement mis en évidence.
+ *
+ * @template T - Type générique pour les filtres (chaîne de caractères).
+ * @param {FilterBarProps<T>} props - Propriétés du composant.
+ * @returns {JSX.Element} Une barre de filtres interactive avec boutons.
+ *
+ * @example
+ * const filters = ['tous', 'sport', 'bien-être', 'nutrition'] as const;
+ * const [selectedFilter, setSelectedFilter] = useState<typeof filters[number]>('tous');
+ *
+ * <FilterBar
+ *   filters={filters}
+ *   selectedFilter={selectedFilter}
+ *   onChange={setSelectedFilter}
+ *   showIcons={true}
+ *   className="my-4"
+ * />
+ */
+
 type FilterBarProps<T extends string> = {
-  // tableau de filtres (ex: ['tous', 'sport', 'nutrition'])
   filters: readonly T[];
   selectedFilter: T;
-  // callback quand on clique sur un filtre
   onChange: (filter: T) => void;
   showIcons?: boolean;
   className?: string;
 };
 
-/**
- * Composant FilterBar
- * Affiche une barre de boutons pour filtrer dynamiquement des éléments
- */
 export function FilterBar<T extends string>({
   filters,
   selectedFilter,
@@ -23,6 +52,7 @@ export function FilterBar<T extends string>({
   showIcons = true,
   className = '',
 }: FilterBarProps<T>) {
+  // Mapping des filtres vers des icônes pour un affichage visuel
   const icons: Record<string, string> = {
     tous: '',
     sport: '🏋️',
@@ -38,6 +68,8 @@ export function FilterBar<T extends string>({
         return (
           <Button
             key={filter}
+            aria-label={`Filtrer par ${filter}`} // accessibilité
+            aria-pressed={isSelected} // indique si le bouton est actif
             onClick={() => onChange(filter)}
             className={`flex items-center gap-2 px-4 py-2 rounded-full border transition duration-200 ease-in-out
               ${

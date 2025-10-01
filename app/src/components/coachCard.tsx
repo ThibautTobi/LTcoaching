@@ -3,6 +3,40 @@ import Link from 'next/link';
 import { LucideBookOpen, Trophy } from 'lucide-react';
 import { Button } from '@/src/components/ui/button';
 
+/**
+ * Composant `CoachProfileCard`
+ *
+ * Ce composant affiche une carte détaillée pour présenter un coach sportif,
+ * avec son image, son nom, sa description, ses formations, ses spécialités,
+ * et éventuellement un bouton de contact.
+ *
+ * @component
+ * @example
+ * <CoachProfileCard
+ *   name="Laure"
+ *   image="/images/laure.png"
+ *   imageAlt="Portrait de Laure, coach sportif experte en yoga"
+ *   description="Coach diplômée spécialisée en yoga, pilates et nutrition."
+ *   formations={[
+ *     'BPJEPS AF - Haltérophilie/Musculation et Cours Collectifs',
+ *     'Coach en nutrition'
+ *   ]}
+ *   specialites={['Yoga', 'Pilates', 'Bien-être']}
+ *   showContact={true}
+ * />
+ *
+ * @param {Object} props - Propriétés du composant.
+ * @param {string} props.name - Nom du coach.
+ * @param {string} props.image - URL de l’image du coach.
+ * @param {string} props.imageAlt - Texte alternatif de l’image (important pour l’accessibilité et le SEO).
+ * @param {string} props.description - Description du coach.
+ * @param {string[]} props.formations - Liste des formations du coach.
+ * @param {string[]} props.specialites - Liste des spécialités du coach.
+ * @param {boolean} [props.showContact=true] - Si `true`, affiche le bouton "Contactez-moi".
+ *
+ * @returns {JSX.Element} Une carte profil interactive et responsive pour présenter un coach.
+ */
+
 type CoachProfileCardProps = {
   name: string;
   image: string;
@@ -24,13 +58,13 @@ export default function CoachProfileCard({
 }: CoachProfileCardProps) {
   return (
     <article className="flex flex-col md:flex-row items-center gap-8 bg-card shadow-xl hover:shadow-[0_0_30px_rgba(198,163,94,0.3)] p-8 rounded-2xl transition-transform hover:border-primary hover:border-2 hover:scale-105 duration-300 ease-in-out">
-      {/* Image Coach */}
       <div className="md:w-1/2 text-center">
         <Image
           src={image}
           alt={imageAlt}
           width={256}
           height={256}
+          aria-label={`Photo de ${name}, coach sportif`}
           className="rounded-full object-cover border-4 border-white shadow mx-auto"
         />
       </div>
@@ -77,8 +111,8 @@ export default function CoachProfileCard({
         {showContact && (
           <Link href="/Contact">
             <Button
-              variant="outline"
-              className="mt-6 block font-bold mx-auto bg-primary text-card rounded-xl hover:scale-105 hover:bg-primary/70"
+              variant={'default'}
+              className="mt-6 block mx-auto hover:scale-110 hover:bg-primary/70"
             >
               Contactez-moi
             </Button>

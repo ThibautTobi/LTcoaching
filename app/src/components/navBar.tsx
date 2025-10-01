@@ -2,13 +2,16 @@
 
 /**
  * @file navBar.tsx
- * Composant qui gère l'affichage du menu responsive (desktop & mobile).
+ * @description Composant de navigation responsive pour Next.js.
+ * - Version desktop : menu horizontal.
+ * - Version mobile : menu burger avec affichage plein écran.
+ * - Gestion du lien actif via `usePathname`.
+ * - Accessibilité renforcée avec `aria-label` et `aria-pressed`.
  */
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
 import { Button } from '@/src/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
@@ -24,6 +27,16 @@ const links = [
   { name: 'Tarifs', href: '/Tarifs' },
   { name: 'Contact', href: '/Contact' },
 ];
+
+/**
+ * Composant `NavBar`
+ *
+ * Affiche une barre de navigation avec 2 comportements :
+ * - Sur desktop : affichage des liens en ligne.
+ * - Sur mobile : bouton burger qui ouvre un menu plein écran.
+ *
+ * @returns {JSX.Element} Barre de navigation responsive.
+ */
 
 export default function NavBar() {
   // État pour afficher/masquer le menu mobile
