@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { DataService } from '@/utils/data';
 
 export const metadata: Metadata = {
-  title: 'Tarifs Coaching Sportif, Bien-être & Nutrition',
+  title: 'Tarifs – LT Coaching | Coach Sportif, Nutrition & Bien-être',
   description:
     'Découvrez nos services de coaching sportif, bien-être et nutrition. Programmes personnalisés, tarifs transparents et résultats garantis.',
   keywords: [
@@ -48,7 +48,7 @@ export default function TarifsLayout({
       '@type': 'Service',
       position: index + 1,
       name: service.title,
-      description: service.Description,
+      description: service.description,
       offers: {
         '@type': 'Offer',
         price: service.price,

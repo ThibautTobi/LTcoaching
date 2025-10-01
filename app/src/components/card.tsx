@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Card, CardContent, CardTitle } from '@/src/components/ui/card';
 import { Button } from '@/src/components/ui/button';
-import { dataType } from '@/utils/data';
+import { DataType } from '@/utils/data';
 import Image from 'next/image';
 
 /**
@@ -12,11 +12,12 @@ import Image from 'next/image';
  *
  * @component
  * @param {Object} props - Les propriétés du composant.
- * @param {dataType} props.DataService - L'objet contenant les données du service (titre, image, description, etc.).
+ * @param {DataType} props.DataService - L'objet contenant les données du service (titre, image, description, etc.).
  * @param {boolean} [props.showLink=false] - Détermine si le bouton "Voir Le Prix" est affiché.
  * @param {boolean} [props.showImage=false] - Détermine si l'image du service est affichée.
  * @param {boolean} [props.showPrice=false] - Détermine si le prix du service est affichée.
  * @param {boolean} [props.showDescription=false] - Détermine si la description du service est affichée.
+ * @param {boolean} [props.showListe=false] - Détermine si la liste du service est affichée.
  *
  * @example
  * <CardService DataService={monService} showLink={true} showImage={true} showPrice={true}/>
@@ -30,7 +31,7 @@ export const CardService = ({
   showImage = false,
   showPrice = false,
 }: {
-  DataService: dataType;
+  DataService: DataType;
   showDescription?: boolean;
   showListe?: boolean;
   showLink?: boolean;
@@ -55,13 +56,13 @@ export const CardService = ({
         )}
         {showDescription && (
           <p className="text-left pt-6" style={{ whiteSpace: 'pre-line' }}>
-            {DataService.Description}
+            {DataService.description}
           </p>
         )}
         {showListe && (
           <ul className="pt-4 font-semibold text-center">
-            {DataService.liste.map((item, index) => (
-              <li key={index} className="p-2 text-primary">
+            {DataService.liste.map((item, id) => (
+              <li key={id} className="p-2 text-primary">
                 * {item}
               </li>
             ))}
@@ -78,8 +79,8 @@ export const CardService = ({
             href={'/Tarifs'}
           >
             <Button
-              variant="outline"
-              className="mt-6 block mx-auto font-bold bg-primary text-card rounded-xl hover:scale-105 hover:bg-primary/70"
+              variant={'default'}
+              className="mt-6 block mx-auto hover:scale-110 hover:bg-primary/70"
             >
               Voir Le Prix
             </Button>

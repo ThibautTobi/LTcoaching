@@ -10,7 +10,7 @@ import { FilterBar } from '@/app/src/components/filterComposant';
  */
 
 /**
- * Page React affichant les tarifs des services de coaching.
+ * Page affichant les tarifs des services de coaching.
  *
  * Cette page liste tous les services disponibles (sport, nutrition, bien-être, etc.)
  * sous forme de cartes uniformes, en utilisant le composant réutilisable `CardService`.

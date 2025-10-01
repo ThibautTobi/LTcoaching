@@ -1,52 +1,37 @@
-/**
- *  Idées déjà intégrées :
- * - Section SEO avec h1 clair et description.
- * - Cartes coachs professionnelles, responsive, avec hover effet CSS.
- * - Boutons personnalisés sous chaque coach pour favoriser l’action.
- * - Liste de formations et lieux de travail claires et iconifiées.
- * - Accessibilité : aria-labels, alt d’image explicite.
- * - Optimisation SEO : structure sémantique, contenu clair.
- * - Animation légère sans Framer Motion (hover + animate-fade-in possible via Tailwind).
-
- *  Idées supplémentaires possibles :
- * 1. Composant `CoachCard.tsx` réutilisable pour simplifier le code.
- * 2. Section "Avis clients" (testimonials).
- * 3. Bloc "Nos valeurs" ou "Notre mission".
- * 4. Statistiques : "200 clients satisfaits", "10 ans d’expérience".
- * 5. Intégration future d’un CMS (ex: Sanity, Strapi) pour charger les données.
- * 6. Ajouter des badges de compétences ou de spécialités.
- * 7. Boutons vers WhatsApp / mail direct ou formulaires dynamiques.
- * 8. Carte Google Maps pour localiser les salles (accessibilité + preuve).
- * 9. Ajout de balises meta `next/head` pour améliorer encore le SEO.
- * 10. Accessibilité renforcée (navigation clavier + contraste).
-
- */
-
 import { Metadata } from 'next';
 import CoachProfileCard from '@/app/src/components/coachCard';
 
 /**
  * @file Presentation.tsx
- * @description Ce composant présente les profils de coachs sportifs avec leurs informations détaillées :
- *              nom, image, description, formations, spécialités, expériences et un bouton de contact.
- *              Il intègre également le composant réutilisable `CoachProfileCard`.
- *
- * @component
- * @returns {JSX.Element} Une section de présentation visuelle des coachs, avec mise en forme responsive.
- *
- * @example
- * // Utilisation dans une page Next.js
- * <Presentation />
+ * @description Ce composant présente les profils des coachs sportifs.
+ *              Il utilise des cartes de profil (`CoachProfileCard`) pour afficher
+ *              des informations détaillées : nom, photo, description, formations,
+ *              spécialités et un bouton de contact.
  *
  * @remarks
- * - Utilise des composants UI personnalisés : `Button`, `CoachProfileCard`, `Lucide icons`.
- * - Utilise Next.js pour le routage (`Link`) et le chargement d'image (`Image`).
- * - Le composant contient un coach affiché manuellement en HTML + un coach via `CoachProfileCard`.
- *   Cela peut servir à comparer ou tester deux approches d'intégration (statique vs dynamique).
+ * - Intègre des données structurées (Schema.org en JSON-LD) pour le SEO.
+ * - Utilise `metadata` de Next.js pour générer les balises `<title>`, `<meta>` et OpenGraph.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * import Presentation from '@/app/Presentation';
+ *
+ * export default function Page() {
+ *   return <Presentation />;
+ * }
+ * ```
+ */
+
+/**
+ * Métadonnées pour la page (SEO + réseaux sociaux).
+ * Next.js lira automatiquement cette constante et l'injectera dans le `<head>`.
+ *
+ * @type {Metadata}
  */
 
 export const metadata: Metadata = {
-  title: 'Nos coachs sportifs – LTcoaching | Experts en fitness et bien-être',
+  title: 'Présentation – LT Coaching | Coach Sportif, Nutrition & Bien-être',
   description:
     "Découvrez Laure et Thibaut, coachs sportifs diplômés avec plus de 7 ans d'expérience. Spécialistes en préparation physique, nutrition, bien-être et sport santé.",
   openGraph: {
@@ -57,7 +42,14 @@ export const metadata: Metadata = {
   },
 };
 
-// modifier les chemins avec l'adresse du site publier et intégrer des image des coachs
+/**
+ * @function Presentation
+ * @description Affiche la section de présentation des coachs.
+ *              Contient les données structurées Schema.org pour Google
+ *              et deux cartes de profil `CoachProfileCard` (Laure et Thibaut).
+ *
+ * @returns {JSX.Element} Composant React représentant la page de présentation.
+ */
 
 export default function Presentation(): JSX.Element {
   return (
@@ -133,6 +125,8 @@ export default function Presentation(): JSX.Element {
             la santé et le bien-être.
           </p>
         </div>
+
+        {/* Carte pour Laure */}
         <CoachProfileCard
           name="Laure"
           image="/images.png"
@@ -154,6 +148,7 @@ export default function Presentation(): JSX.Element {
           ]}
           showContact={true}
         />
+        {/* Carte pour Thibaut */}
         <CoachProfileCard
           name="Thibaut"
           image="/images.png"
