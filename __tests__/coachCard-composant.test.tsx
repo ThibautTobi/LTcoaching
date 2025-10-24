@@ -46,7 +46,7 @@ describe('CoachProfileCard', () => {
 
     // Vérifie l'image avec alt
     expect(
-      screen.getByRole('img', { name: mockProps.imageAlt })
+      screen.getByRole('img', { name: 'Photo de Jean Dupont, coach sportif' })
     ).toHaveAttribute('src', mockProps.image);
 
     // Vérifie la description

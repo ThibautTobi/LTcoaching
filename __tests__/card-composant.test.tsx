@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { CardService } from '@/app/src/components/card';
 import '@testing-library/jest-dom';
-import { dataType } from '@/utils/data';
+import { DataType } from '@/utils/data';
 
 // --- Mocks des dépendances externes ---
 
@@ -20,17 +20,48 @@ jest.mock('next/link', () => {
 });
 
 // Mock du composant next/image
-jest.mock('next/image', () => {
-  // eslint-disable-next-line react/display-name
-  const MockedImage = ({
-    alt,
-    ...rest
-  }: React.ImgHTMLAttributes<HTMLImageElement>) => {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img alt={alt || ''} {...rest} />;
-  };
-  return MockedImage;
-});
+// jest.mock('next/image', () => {
+//   // eslint-disable-next-line react/display-name
+//   const MockedImage = ({
+//     alt,
+//     ...rest
+//   }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+//     // eslint-disable-next-line @next/next/no-img-element
+//     return <img alt={alt || ''} {...rest} />;
+//   };
+//   return MockedImage;
+// });
+
+// Mock du composant next/image avec gestion de fill et priority
+// jest.mock('next/image', () => {
+//   // eslint-disable-next-line react/display-name
+//   const MockedNextImage = ({
+//     src,
+//     alt,
+//     fill,
+//     width,
+//     height,
+//     priority,
+//     ...rest
+//   }: any) => {
+//     // Simule le style de l’image selon la prop "fill"
+//     const style = fill
+//       ? { position: 'absolute', inset: 0, objectFit: 'cover' }
+//       : { width, height };
+
+//     // eslint-disable-next-line @next/next/no-img-element
+//     return (
+//       <img
+//         src={typeof src === 'string' ? src : (src?.src || '')}
+//         alt={alt || ''}
+//         data-priority={priority ? 'true' : 'false'}
+//         style={style}
+//         {...rest}
+//       />
+//     );
+//   };
+//   return MockedNextImage;
+// });
 
 // Mock des composants Shadcn/UI pour un rendu simplifié
 jest.mock('@/src/components/ui/card', () => ({
@@ -54,10 +85,10 @@ jest.mock('@/src/components/ui/button', () => ({
 }));
 
 // Faux objet de données pour les tests
-const mockService: dataType = {
+const mockService: DataType = {
   id: 'service1',
   title: 'Coaching Sportif',
-  Description: 'Un accompagnement sportif personnalisé.',
+  description: 'Un accompagnement sportif personnalisé.',
   image: '/img/sport.jpg',
   imageAlt: 'Image sport',
   liste: [''],
@@ -75,7 +106,7 @@ describe('CardService Component', () => {
     ).toBeInTheDocument();
 
     // Vérifie que la description est affichée
-    expect(screen.getByText(mockService.Description)).toBeInTheDocument();
+    expect(screen.getByText(mockService.description)).toBeInTheDocument();
   });
 
   it('affiche le bouton "Voir Le Prix" si showLink est true', () => {

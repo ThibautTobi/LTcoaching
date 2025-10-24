@@ -9,11 +9,14 @@ const config: Config = {
   coverageProvider: 'v8',
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.tsx'],
   transformIgnorePatterns: ['/node_modules/(?!(lucide-react)/)'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '\\.(css|scss|sass)$': 'identity-obj-proxy',
+  },
+  transform: {
+    '^.+\\.(t|j)sx?$': 'babel-jest',
   },
 
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],

@@ -107,7 +107,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ServicesPage from '@/app/Services/page';
-import { dataType } from '@/utils/data';
+import { DataType } from '@/utils/data';
 
 // --- 🔹 MOCKS ---
 // Mock de DataService
@@ -119,7 +119,7 @@ jest.mock('@/utils/data', () => ({
       categories: ['sport'],
       image: '/sport.jpg',
       imageAlt: 'Coaching Sportif',
-      Description: 'Un coaching personnalisé',
+      description: 'Un coaching personnalisé',
       liste: ['Objectif', 'Résultat'],
       price: '50',
     },
@@ -129,7 +129,7 @@ jest.mock('@/utils/data', () => ({
       categories: ['bien-être'],
       image: '/massage.jpg',
       imageAlt: 'Massage Bien-être',
-      Description: 'Un moment de détente',
+      description: 'Un moment de détente',
       liste: ['Relaxation', 'Bien-être'],
       price: '60',
     },
@@ -139,7 +139,7 @@ jest.mock('@/utils/data', () => ({
       categories: ['nutrition'],
       image: '/nutrition.jpg',
       imageAlt: 'Conseil Nutrition',
-      Description: 'Des conseils alimentaires adaptés',
+      description: 'Des conseils alimentaires adaptés',
       liste: ['Équilibre', 'Santé'],
       price: '40',
     },
@@ -149,16 +149,16 @@ jest.mock('@/utils/data', () => ({
       categories: ['sport', 'nutrition'],
       image: '/pack.jpg',
       imageAlt: 'Pack Complet',
-      Description: 'Sport + Nutrition pour des résultats rapides',
+      description: 'Sport + Nutrition pour des résultats rapides',
       liste: ['Programme sport', 'Suivi nutritionnel'],
       price: '90',
     },
-  ] satisfies dataType[],
+  ] satisfies DataType[],
 }));
 
 // Mock de CardService
 jest.mock('@/app/src/components/card', () => ({
-  CardService: ({ DataService }: { DataService: dataType }) => (
+  CardService: ({ DataService }: { DataService: DataType }) => (
     <div data-testid="card">{DataService.title}</div>
   ),
 }));

@@ -15,14 +15,17 @@ exports[`ServicesPage Component correspond au snapshot 1`] = `
     >
       LT Coaching vous accompagne dans votre transformation physique et mentale.
       <br />
+      <br />
       Découvrez nos services sur mesure adaptés à vos objectifs :
       <br />
-       perte de poids, prise de masse, amélioration des performances, bien-être et équilibre alimentaire.
+      <br />
+      perte de poids, prise de masse, amélioration des performances, bien-être et équilibre alimentaire.
     </p>
     <div
       class="flex justify-center gap-4 mb-8 flex-wrap"
     >
       <button
+        aria-pressed="true"
         class="flex items-center gap-2 px-4 py-2 rounded-full border transition duration-200 ease-in-out
           bg-card text-primary font-semibold border-2 border-primary
         "
@@ -35,6 +38,7 @@ exports[`ServicesPage Component correspond au snapshot 1`] = `
         </span>
       </button>
       <button
+        aria-pressed="false"
         class="flex items-center gap-2 px-4 py-2 rounded-full border transition duration-200 ease-in-out
           bg-card border-white text-white hover:bg-[#C6A35E]/20
         "
@@ -49,6 +53,7 @@ exports[`ServicesPage Component correspond au snapshot 1`] = `
         </span>
       </button>
       <button
+        aria-pressed="false"
         class="flex items-center gap-2 px-4 py-2 rounded-full border transition duration-200 ease-in-out
           bg-card border-white text-white hover:bg-[#C6A35E]/20
         "
@@ -63,6 +68,7 @@ exports[`ServicesPage Component correspond au snapshot 1`] = `
         </span>
       </button>
       <button
+        aria-pressed="false"
         class="flex items-center gap-2 px-4 py-2 rounded-full border transition duration-200 ease-in-out
           bg-card border-white text-white hover:bg-[#C6A35E]/20
         "
