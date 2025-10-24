@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/src/components/ui/button';
 import Image from 'next/image';
+import PromoBande from './src/components/promo';
 
 /**
  * Page d'accueil (`Home`).
@@ -36,17 +37,19 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-card" />
       </div>
-
+      {/* bandeau promo */}
+      <PromoBande />
       {/* Section présentation de l'offre principale */}
       <section className="w-full py-10 px-6 text-center">
         <h1 className="text-[24px] font-bold md:text-5xl mb-4">
-          Atteins tes objectifs avec{' '}
+          Atteins tes objectifs avec <br />
           <span className="text-primary">LT coaching</span>
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-          Coaching personnalisé, suivi nutritionnel, préparation mentale.
+          Transformez votre vie, votre entreprise , votre bien-être. Un
+          accompagnement global sur-mesure:
           <br />
-          Des coachs diplômés à tes côtés, pour atteindre tes objectifs.
+          Coaching personalisé, Nutrition, Yoga, Pilates et Soins Mère-enfant.
         </p>
       </section>
 
@@ -58,14 +61,17 @@ export default function Home() {
         <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
           Deux Coachs sportifs diplômés avec plus de 7 ans d&apos;expérience.
           <br />
+          <br />
           Nous allons t&apos;aider à transformer ton corps et ton mental.
           <br />
-          Que tu veuilles perdre du poids, prendre du muscle, améliorer des
-          qualités physiques specifique, preparation de concours ou tests
-          physiques ou améliorer ta santé global.
+          <br />
+          Que tu veuilles perdre du poids, prendre du muscle, améliorer ta santé
+          global ou tes qualités physiques spécifiques.Ou encore être accompagné
+          à la préparation de concours ou tests physiques.
+          <br />
           <br />
           Nous t&apos;accompagnerons pas à pas avec des séances sur-mesure
-          personnalisé pour tes objectifs sportif ou santé et un vrai suivi.
+          personnalisées.
         </p>
       </section>
 

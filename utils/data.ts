@@ -141,8 +141,11 @@ export const DataService: DataType[] = [
       'Séances douces et adaptées pour favoriser le confort, le sommeil et la détente des bébés.\n Techniques respectueuses et sécuritaires pour renforcer le lien parent-enfant.',
     liste: [
       'Massage bébé',
-      'Techniques de relaxation',
+      'Bain enveloppé',
+      'Rituel bain sensoriel',
+      'Réflexologie du nourrisson',
       'Accompagnement des parents',
+      'Accompagnement prés et post partum',
     ],
     price: '45€ / séance',
     categories: ['bien-être'],

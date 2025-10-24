@@ -1,11 +1,11 @@
 import { notFound } from 'next/navigation';
 import { DataService } from '@/utils/data';
-import { dataType } from '@/utils/data';
+import { DataType } from '@/utils/data';
 import { CardService } from '@/app/src/components/card';
 
 // Optionnel : génération statique pour les performances (SSG)
 export async function generateStaticParams() {
-  return DataService.map((service: dataType) => ({
+  return DataService.map((service: DataType) => ({
     id: service.id,
   }));
 }
@@ -18,7 +18,7 @@ interface ServicePageProps {
 }
 
 export default function ServicePage({ params }: ServicePageProps) {
-  const service = DataService.find((item: dataType) => item.id === params.id);
+  const service = DataService.find((item: DataType) => item.id === params.id);
 
   if (!service) {
     return notFound();

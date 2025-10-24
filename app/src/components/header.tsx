@@ -29,7 +29,7 @@ export default function Header() {
             />
           </Link>
         </div>
-        <p className="italic text-xs">Sport Bien-être Nutrition</p>
+        <p className="italic">Sport Bien-être Nutrition</p>
         <NavBar />
       </div>
     </header>

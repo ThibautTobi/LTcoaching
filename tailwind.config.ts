@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import tailwindcssAnimate from 'tailwindcss-animate'; //
 
 const config: Config = {
   darkMode: ['class'],
@@ -9,6 +10,30 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        band: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-780%)' },
+        },
+        bandMB: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-350%)' },
+        },
+        bandLG: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-260%)' },
+        },
+        bandXL: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-260%)' },
+        },
+      },
+      animation: {
+        band: 'band 35s linear infinite',
+        bandMB: 'bandMB 35s linear infinite',
+        bandLG: 'bandLG 30s linear infinite',
+        bandXL: 'bandLG 30s linear infinite',
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -58,6 +83,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [tailwindcssAnimate],
 };
 export default config;
