@@ -114,7 +114,7 @@ export default function Presentation(): JSX.Element {
 
       <section className="py-16 px-8 max-w-6xl mx-auto space-y-20">
         <div className="text-center space-y-2">
-          <h1 className="text-[24px] font-bold text-primary">
+          <h1 className="text-[24px] font-bold text-primary mb-4">
             Découvrez nos coachs sportifs professionnels
           </h1>
           <p className="text-muted-foreground text-lg">
@@ -131,7 +131,7 @@ export default function Presentation(): JSX.Element {
           name="Laure"
           image="/images.png"
           imageAlt="Laure, coach sportif experte en yoga, nutrition et bien-être"
-          description="Coach sportif diplômée avec plus de 7 ans d'expérience, spécialisée dans le bien-être, la nutrition et la remise en forme. Professeure de yoga et de pilates, elle est également réflexologue plantaire, palmaire et crânienne pour adultes et nourrissons."
+          description="Coach sportif diplômée avec plus de 7 ans d'expérience, spécialisée dans le bien-être, la nutrition et la remise en forme. Professeure de yoga et de pilates, également réflexologue plantaire, palmaire et crânienne pour adultes et nourrissons."
           formations={[
             'BPJEPS AF - Haltérophilie/Musculation et Cours Collectifs',
             'Coach en nutrition',

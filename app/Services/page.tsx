@@ -67,9 +67,12 @@ export default function ServicesPage() {
         LT Coaching vous accompagne dans votre transformation physique et
         mentale.
         <br />
-        Découvrez nos services sur mesure adaptés à vos objectifs :<br /> perte
-        de poids, prise de masse, amélioration des performances, bien-être et
-        équilibre alimentaire.
+        <br />
+        Découvrez nos services sur mesure adaptés à vos objectifs :
+        <br />
+        <br />
+        perte de poids, prise de masse, amélioration des performances, bien-être
+        et équilibre alimentaire.
       </p>
 
       {/* Boutons de filtre */}

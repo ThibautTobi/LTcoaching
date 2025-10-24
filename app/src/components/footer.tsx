@@ -72,12 +72,12 @@ export default function Footer(): JSX.Element {
               ltcoaching.contact@gmail.com
             </a>
           </p>
-          {/* <p>
+          <p>
             Téléphone :{' '}
-            <a href="tel:0600000000" className="hover:text-primary transition">
-              06 00 00 00 00
+            <a href="tel:0769330837" className="hover:text-primary transition">
+              07 69 33 08 37
             </a>
-          </p> */}
+          </p>
 
           <div className="flex space-x-6 mt-4 flex-row justify-start">
             <a

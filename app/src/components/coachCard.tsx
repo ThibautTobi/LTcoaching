@@ -57,7 +57,7 @@ export default function CoachProfileCard({
   showContact = true,
 }: CoachProfileCardProps) {
   return (
-    <article className="flex flex-col md:flex-row items-center gap-8 bg-card shadow-xl hover:shadow-[0_0_30px_rgba(198,163,94,0.3)] p-8 rounded-2xl transition-transform hover:border-primary hover:border-2 hover:scale-105 duration-300 ease-in-out">
+    <article className="flex flex-col md:flex-row items-center gap-8 bg-card shadow-xl hover:shadow-[0_0_30px_rgba(198,163,94,0.3)] p-8 rounded-2xl transition-transform hover:border-primary hover:border-2 hover:scale-105 duration-1000 ease-in-out">
       <div className="md:w-1/2 text-center">
         <Image
           src={image}

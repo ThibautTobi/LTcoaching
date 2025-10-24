@@ -156,11 +156,14 @@ export default function ContactPage() {
         Vous avez des questions, besoin d’un accompagnement personnalisé ou
         souhaitez prendre rendez-vous ?
         <br />
+        <br />
         Notre équipe de coachs sportifs à Villers-Ecalles est à votre écoute.
+        <br />
         <br />
         Remplissez ce formulaire de contact, nous vous répondrons rapidement.
         <br />
-        <br />* Champs Obligatoires
+        <br />
+        <span className="text-primary">* Champs Obligatoires</span>
       </p>
 
       {/* Message de succès */}
@@ -217,7 +220,7 @@ export default function ContactPage() {
         <form
           aria-label="formulaire de contact"
           onSubmit={form.handleSubmit(onSubmit)} // Liaison du submit avec RHF
-          className="space-y-2 w-full max-w-md p-6 bg-card border border-border rounded-2xl hover:scale-105 hover:shadow-[0_0_30px_rgba(198,163,94,0.3)]"
+          className="space-y-2 w-full max-w-md p-8 bg-card hover:border-primary hover:border-2 rounded-2xl shadow-xl hover:scale-105 hover:shadow-[0_0_30px_rgba(198,163,94,0.3)] transition-transform duration-1000 ease-in-out"
         >
           {/* Champ Nom */}
           <FormField
