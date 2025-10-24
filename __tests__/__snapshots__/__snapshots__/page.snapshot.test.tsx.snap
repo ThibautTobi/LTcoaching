@@ -18,6 +18,76 @@ exports[`Home page snapshot tests devrait correspondre à un snapshot stable 1`]
         class="absolute inset-0 bg-gradient-to-b from-transparent to-card"
       />
     </div>
+    <a
+      href="/Promo"
+    >
+      <div
+        class="relative overflow-hidden bg-primary text-white py-3 text-2xl cursor-pointer hover:bg-primary/90 transition-colors"
+      >
+        <div
+          class="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-primary to-transparent z-10"
+        />
+        <div
+          class="pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-primary to-transparent z-10"
+        />
+        <p
+          class="animate-band md:animate-bandMB lg:animate-bandLG xl:animate-bandXL hover:[animation-play-state:paused] whitespace-nowrap font-semibold text-center px-4 tracking-wide"
+        >
+          🎉 
+          <strong>
+            Promo
+          </strong>
+           : 10 séances de coaching 
+          <strong
+            class="text-card"
+          >
+            350 €
+          </strong>
+           au lieu de 
+          <strong
+            class="line-through text-card"
+          >
+            450 €
+          </strong>
+           / 5 séances de réflexologie 
+          <strong
+            class="text-card"
+          >
+            215 €
+          </strong>
+           au lieu de 
+          <strong
+            class="line-through text-card"
+          >
+            225 €
+          </strong>
+           / Rituel bain sensoriel nourrisson à domicile 
+          <strong
+            class="text-card"
+          >
+            100 €
+          </strong>
+           au lieu de 
+          <strong
+            class="line-through text-card"
+          >
+            170 €
+          </strong>
+           / Plan nutritionnel 
+          <strong
+            class="taxt-card"
+          >
+            100 €
+          </strong>
+           au lieu de 
+          <strong
+            class="line-through text-card"
+          >
+            200 €
+          </strong>
+        </p>
+      </div>
+    </a>
     <section
       class="w-full py-10 px-6 text-center"
     >
@@ -25,18 +95,19 @@ exports[`Home page snapshot tests devrait correspondre à un snapshot stable 1`]
         class="text-[24px] font-bold md:text-5xl mb-4"
       >
         Atteins tes objectifs avec 
+        <br />
         <span
           class="text-primary"
         >
-          LTcoaching
+          LT coaching
         </span>
       </h1>
       <p
         class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
       >
-        Coaching personnalisé, suivi nutritionnel, préparation mentale.
+        Transformez votre vie, votre entreprise , votre bien-être. Un accompagnement global sur-mesure:
         <br />
-        Des coachs diplômés à tes côtés, pour atteindre tes objectifs.
+        Coaching personalisé, Nutrition, Yoga, Pilates et Soins Mère-enfant.
       </p>
     </section>
     <section
@@ -52,11 +123,14 @@ exports[`Home page snapshot tests devrait correspondre à un snapshot stable 1`]
       >
         Deux Coachs sportifs diplômés avec plus de 7 ans d'expérience.
         <br />
+        <br />
         Nous allons t'aider à transformer ton corps et ton mental.
         <br />
-        Que tu veuilles perdre du poids, prendre du muscle, améliorer des qualités physiques specifique, preparation de concours ou tests physiques ou améliorer ta santé global.
         <br />
-        Nous t'accompagnerons pas à pas avec des séances sur-mesure personnalisé pour tes objectifs sportif ou santé et un vrai suivi.
+        Que tu veuilles perdre du poids, prendre du muscle, améliorer ta santé global ou tes qualités physiques spécifiques.Ou encore être accompagné à la préparation de concours ou tests physiques.
+        <br />
+        <br />
+        Nous t'accompagnerons pas à pas avec des séances sur-mesure personnalisées.
       </p>
     </section>
     <section
@@ -76,7 +150,7 @@ exports[`Home page snapshot tests devrait correspondre à un snapshot stable 1`]
         href="/Contact"
       >
         <button
-          class="items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-11 mt-6 block mx-auto p-2 font-bold bg-primary text-card rounded-xl hover:scale-105 hover:bg-primary/70"
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-card font-bold rounded-full h-10 px-6 py-3 hover:scale-110 hover:bg-primary/70"
         >
           Nous contacter
         </button>
