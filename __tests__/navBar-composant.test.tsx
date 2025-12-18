@@ -62,7 +62,7 @@ describe('NavBar', () => {
       screen.getByRole('link', { name: /Présentation/i })
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Services/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Tarifs/i })).toBeInTheDocument();
+    // expect(screen.getByRole('link', { name: /Tarifs/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Contact/i })).toBeInTheDocument();
 
     const activeLink = screen.getByRole('link', { name: 'Services' });

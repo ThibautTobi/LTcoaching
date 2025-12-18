@@ -86,10 +86,10 @@ describe('Présentation Component', () => {
     );
 
     expect(laureImg).toBeInTheDocument();
-    expect(laureImg).toHaveAttribute('src', '/images.png');
+    expect(laureImg).toHaveAttribute('src', '/coachFille.webp');
 
     expect(thibautImg).toBeInTheDocument();
-    expect(thibautImg).toHaveAttribute('src', '/images.png');
+    expect(thibautImg).toHaveAttribute('src', '/coachGarcon.webp');
   });
 
   test('doit inclure les scripts JSON-LD pour SEO', () => {
