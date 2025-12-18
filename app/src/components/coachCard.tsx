@@ -65,7 +65,7 @@ export default function CoachProfileCard({
           width={256}
           height={256}
           aria-label={`Photo de ${name}, coach sportif`}
-          className="rounded-full object-cover border-4 border-white shadow mx-auto"
+          className="rounded-full object-cover border-4 border-primary mx-auto"
         />
       </div>
 

@@ -47,11 +47,11 @@ export default function Footer(): JSX.Element {
                 Services
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/Tarifs" className="hover:text-primary transition">
                 Tarifs
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/Contact" className="hover:text-primary transition">
                 Contact

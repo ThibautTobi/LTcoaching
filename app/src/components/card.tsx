@@ -69,7 +69,7 @@ export const CardService = ({
           </ul>
         )}
         {showPrice && (
-          <p className="text-primary font-bold text-center py-4">
+          <p className="text-white font-extrabold text-center py-4">
             {DataService.price}
           </p>
         )}

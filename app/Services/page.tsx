@@ -108,9 +108,9 @@ export default function ServicesPage() {
                 DataService={data}
                 showDescription={true}
                 showListe={true}
-                showLink={true}
+                showLink={false}
                 showImage={true}
-                showPrice={false}
+                showPrice={true}
               />
             </div>
           ))
