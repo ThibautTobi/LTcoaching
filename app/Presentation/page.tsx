@@ -129,7 +129,7 @@ export default function Presentation(): JSX.Element {
         {/* Carte pour Laure */}
         <CoachProfileCard
           name="Laure"
-          image="/images.png"
+          image="/coachFille.webp"
           imageAlt="Laure, coach sportif experte en yoga, nutrition et bien-être"
           description="Coach sportif diplômée avec plus de 7 ans d'expérience, spécialisée dans le bien-être, la nutrition et la remise en forme. Professeure de yoga et de pilates, également réflexologue plantaire, palmaire et crânienne pour adultes et nourrissons."
           formations={[
@@ -151,7 +151,7 @@ export default function Presentation(): JSX.Element {
         {/* Carte pour Thibaut */}
         <CoachProfileCard
           name="Thibaut"
-          image="/images.png"
+          image="/coachGarcon.webp"
           imageAlt="Thibaut, coach sportif spécialisé en préparation physique et mentale"
           description="Coach sportif diplômé avec plus de 7 ans d'expérience, spécialisé en préparation physique, préparation aux tests et concours, ainsi qu’en préparation mentale. Instructeur certifié LesMills, il enseigne le BodyPump, le RPM, le BodyBalance, le BodyAttack et le BodyCombat."
           formations={[
