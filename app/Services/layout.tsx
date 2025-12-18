@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Services – LT Coaching | Coach Sportif, Nutrition & Bien-être',
     description:
-      'Découvrez nos services personnalisés : coaching sportif, nutrition, bien-être et préparation mentale. Des programmes adaptés à vos objectifs.',
+      'Découvrez nos services et tarifs personnalisés : coaching sportif, nutrition, bien-être et préparation mentale. Des programmes adaptés à vos objectifs.',
     keywords: [
       'coaching sportif',
       'programme nutrition',

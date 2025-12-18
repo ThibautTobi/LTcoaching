@@ -24,7 +24,7 @@ const links = [
   { name: 'Accueil', href: '/' },
   { name: 'Présentation', href: '/Presentation' },
   { name: 'Services', href: '/Services' },
-  { name: 'Tarifs', href: '/Tarifs' },
+  // { name: 'Tarifs', href: '/Tarifs' },
   { name: 'Contact', href: '/Contact' },
 ];
 
