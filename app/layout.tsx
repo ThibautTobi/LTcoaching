@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import Header from './src/components/header';
-import Footer from './src/components/footer';
+import Header from '@/src/components/layout/header';
+import Footer from '@/src/components/layout/footer';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -16,9 +16,12 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Acceuil – LT Coaching | Coach Sportif, Nutrition & Bien-être',
+  title: 'Accueil – LT Coaching | Coach Sportif, Nutrition & Bien-être',
   description:
     'Coaching sportif sur-mesure à Villers-Écalles, Barentin et en ligne. Musculation, nutrition, yoga, pilate, reflexiologie, préparation mentale et coaching d’entreprise par LT Coaching.',
+  alternates: {
+    canonical: 'https://lt-coaching.vercel.app/',
+  },
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -35,7 +38,8 @@ export const metadata: Metadata = {
   },
   keywords: [
     'coaching sportif Villers-Écalles',
-    'coach sportif Barentin',
+    'coaching Barentin',
+    'coach sportif',
     'programme musculation personnalisé',
     'nutrition sportive',
     'cours de yoga',
@@ -47,7 +51,7 @@ export const metadata: Metadata = {
     'small group training',
     'coaching à distance en ligne',
   ],
-  authors: [{ name: 'LT Coaching', url: 'https://www.tonsite.com' }],
+  authors: [{ name: 'LT Coaching', url: 'https://lt-coaching.vercel.app/' }],
   openGraph: {
     title: 'LT Coaching – Coaching Sportif à Villers-Écalles et Barentin',
     description:
@@ -55,10 +59,10 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     type: 'website',
     // a changer
-    url: 'https://www.tonsite.com',
+    url: 'https://lt-coaching.vercel.app/',
     images: [
       {
-        url: 'https://www.tonsite.com/og-ltcoaching.webp',
+        url: 'https://lt-coaching.vercel.app/og-ltcoaching.webp',
         width: 1200,
         height: 630,
         alt: 'Coach sportif LT Coaching en séance à Villers-Écalles et Barentin',
@@ -76,11 +80,11 @@ export default function RootLayout({
   const schemaOrganization = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'SportsActivityLocation'],
-    '@id': 'https://www.tonsite.com/#ltcoaching',
+    '@id': 'https://lt-coaching.vercel.app/#ltcoaching',
     name: 'LTcoaching',
-    image: 'https://www.tonsite.com/logo-google-ltcoaching.png',
-    logo: 'https://www.tonsite.com/LTcoaching-sansBG.png',
-    url: 'https://www.tonsite.com',
+    image: 'https://lt-coaching.vercel.app/logo-google-ltcoaching.png',
+    logo: 'https://lt-coaching.vercel.app/LTcoaching-sansBG.png',
+    url: 'https://lt-coaching.vercel.app/',
     // "telephone": "+33 000000000",
     email: 'ltcoaching.contact@gmail.com',
     address: {
