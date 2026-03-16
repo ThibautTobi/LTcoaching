@@ -2,12 +2,8 @@
 
 import { useState } from 'react';
 import { DataService } from '@/utils/data';
-import { CardService } from '@/app/src/components/card';
-import { FilterBar } from '@/app/src/components/filterComposant';
-
-/**
- * redirection avec plus d'information sur chaque service en reflexion
- */
+import { CardService } from '@/src/components/sections/card';
+import { FilterBar } from '@/src/components/sections/filterComposant';
 
 /**
  * Page affichant les tarifs des services de coaching.
@@ -16,14 +12,13 @@ import { FilterBar } from '@/app/src/components/filterComposant';
  * sous forme de cartes uniformes, en utilisant le composant réutilisable `CardService`.
  * Chaque carte affiche le titre, la description et l’image du service.
  *
- * @page TarifsPage
+ * cette page contient :
+ * - filtre par categorie.
+ * - affichage des services et tarifs qui se trouve dans la data.
+ *
+ * @page tarifs
  * @returns {JSX.Element} Le contenu JSX de la page des tarifs.
  *
- * @example
- * // Utilisation dans une route Next.js :
- * export default function Page() {
- *   return <TarifsPage />;
- * }
  */
 
 const filters = ['tous', 'sport', 'bien-être', 'nutrition'] as const;
@@ -32,7 +27,9 @@ type FilterType = (typeof filters)[number];
 export default function TarifsPage() {
   const [selectedFilter, setSelectedFilter] = useState<FilterType>('tous');
 
-  // Filtrage dynamique des services
+  {
+    /* Filtrage dynamique des services */
+  }
   const filteredServices =
     selectedFilter === 'tous'
       ? DataService

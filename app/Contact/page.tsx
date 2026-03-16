@@ -22,9 +22,23 @@ import { Button } from '@/src/components/ui/button';
 import { Alert, AlertTitle, AlertDescription } from '@/src/components/ui/alert';
 
 /**
- *  Schéma de validation du formulaire de contact avec Zod.
- * - Vérifie que chaque champ respecte les contraintes (longueur, format, etc.)
- * - Fournit des messages d'erreur personnalisés
+ * Schéma de validation Zod pour le formulaire de contact.
+ *
+ * Ce schéma garantit que toutes les entrées utilisateur
+ * respectent les contraintes requises avant l'envoi du formulaire.
+ *
+ * Il valide :
+ *
+ * - Les champs obligatoires
+ * - Le format de l'email
+ * - Le format du numéro de téléphone (10 chiffres)
+ * - La longueur minimale du message
+ *
+ * Ce schéma est utilisé par React Hook Form via `zodResolver`
+ * afin de fournir une validation automatique et des données
+ * typées pour le formulaire.
+ *
+ * @type {z.ZodObject}
  */
 
 const contactSchema = z.object({
@@ -44,35 +58,45 @@ const contactSchema = z.object({
 });
 
 /**
- *  Type dérivé automatiquement du schéma Zod.
- * - Permet d'avoir l'auto-complétion et la sécurité de types dans le code.
+ * Type TypeScript inféré automatiquement à partir du schéma
+ * de validation Zod.
+ *
+ * Ce type garantit un typage fort des données du formulaire
+ * dans toute l'application.
+ *
+ * @typedef {z.infer<typeof contactSchema>} ContactFormData
  */
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
 /**
- *  Page de contact contenant :
- * - Un formulaire validé par Zod + React Hook Form
- * - Une vérification ReCAPTCHA
- * - Un envoi de mail via EmailJS
- * - Des messages de succès ou d'erreur
+ * Composant de la page de contact.
  *
- * @returns JSX.Element
+ * Ce composant affiche un formulaire de contact entièrement validé utilisant :
+ *
+ * - **React Hook Form** pour la gestion de l'état du formulaire
+ * - **Zod** pour la validation basée sur un schéma
+ * - **Google reCAPTCHA** pour empêcher les soumissions de spam
+ * - **EmailJS** pour envoyer le message sans serveur backend
+ *
+ * Fonctionnalités :
+ *
+ * - Validation en temps réel
+ * - État de chargement pendant l'envoi
+ * - Fenêtre de confirmation en cas de succès
+ * - Gestion des erreurs si l'envoi échoue
+ * - Réinitialisation automatique du formulaire après envoi
+ *
+ * @component
+ * @returns {JSX.Element} La page de contact rendue.
  */
 
 export default function ContactPage() {
-  // État pour gérer l'envoi en cours
   const [isSending, setIsSending] = useState(false);
-  // État pour savoir si le formulaire a été soumis avec succès
-  const [submitted, setSubmitted] = useState(false);
-  // État pour stocker les erreurs éventuelles
-  const [error, setError] = useState<string | null>(null);
 
-  /**
-   * Initialisation de React Hook Form avec :
-   * - Le resolver Zod (qui applique le schéma contactSchema)
-   * - Des valeurs par défaut pour chaque champ
-   */
+  const [submitted, setSubmitted] = useState(false);
+
+  const [error, setError] = useState<string | null>(null);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -86,33 +110,53 @@ export default function ContactPage() {
     },
   });
 
-  /** Référence vers le composant ReCAPTCHA (pour récupérer et reset le token) */
+  /**
+   * Référence vers le composant Google reCAPTCHA.
+   *
+   * Utilisée pour :
+   *
+   * - récupérer le token du captcha
+   * - réinitialiser le captcha après l'envoi du formulaire
+   *
+   * @type {React.RefObject<ReCAPTCHATypes>}
+   */
 
   const recaptchaRef = useRef<ReCAPTCHATypes>(null);
 
   /**
-   *  Fonction appelée à la soumission du formulaire
-   * @param data Données validées du formulaire
+   * Gère la soumission du formulaire de contact.
+   *
+   * Cette fonction :
+   *
+   * 1. Récupère le token reCAPTCHA
+   * 2. Vérifie que le captcha a bien été validé
+   * 3. Envoie les données du formulaire via EmailJS
+   * 4. Affiche un message de succès ou d'erreur
+   * 5. Réinitialise le formulaire et le captcha en cas de succès
+   *
+   * @async
+   * @function onSubmit
+   * @param {ContactFormData} data - Données validées du formulaire provenant de React Hook Form.
+   * @returns {Promise<void>}
+   *
+   * @throws {Error} Si l'envoi de l'email échoue.
    */
 
   const onSubmit = async (data: ContactFormData) => {
     console.log('Formulaire envoyé  :', data);
 
-    // Récupération du token ReCAPTCHA
     const recaptchaToken = recaptchaRef.current?.getValue();
 
-    // Si l'utilisateur n'a pas validé le captcha → erreur
     if (!recaptchaToken) {
       setError('Veuillez valider le reCAPTCHA.');
       return;
     }
 
     setError(null);
-    // Active le mode "chargement"
+
     setIsSending(true);
 
     try {
-      // Envoi du mail avec EmailJS
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
@@ -128,27 +172,23 @@ export default function ContactPage() {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
 
-      // Succès → affichage du message de confirmation
       setSubmitted(true);
-      // Aucune Erreur reste a null
+
       setError(null);
-      // Reset du formulaire
+
       form.reset();
-      // Reset du captcha
+
       recaptchaRef.current?.reset();
     } catch (err) {
-      // Erreur lors de l’envoi
       setError('Une erreur est survenue, veuillez réessayer.');
       console.error(err);
     } finally {
-      // Fin du mode "chargement"
       setIsSending(false);
     }
   };
 
   return (
     <section className="flex flex-col items-center justify-center px-8 py-8 sm:px-6 lg:px-8 max-w-2xl mx-auto">
-      {/* Titre et description */}
       <h1 className="text-[24px] font-bold text-center text-[#C6A35E] m-6">
         Contactez-nous
       </h1>
@@ -358,7 +398,6 @@ export default function ContactPage() {
             />
           </div>
 
-          {/* Bouton envoyer formulaire */}
           <Button
             variant={'default'}
             type="submit"

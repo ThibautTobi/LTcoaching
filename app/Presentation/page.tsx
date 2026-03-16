@@ -1,32 +1,26 @@
 import { Metadata } from 'next';
-import CoachProfileCard from '@/app/src/components/coachCard';
+import CoachProfileCard from '@/src/components/sections/coachCard';
 
 /**
- * @file Presentation.tsx
- * @description Ce composant présente les profils des coachs sportifs.
- *              Il utilise des cartes de profil (`CoachProfileCard`) pour afficher
- *              des informations détaillées : nom, photo, description, formations,
- *              spécialités et un bouton de contact.
+ * Page de présentation des coachs LT Coaching.
  *
- * @remarks
- * - Intègre des données structurées (Schema.org en JSON-LD) pour le SEO.
- * - Utilise `metadata` de Next.js pour générer les balises `<title>`, `<meta>` et OpenGraph.
+ * Cette page affiche les profils des coachs sportifs à l'aide
+ * du composant `CoachProfileCard`.
  *
- * @component
- * @example
- * ```tsx
- * import Presentation from '@/app/Presentation';
+ * Fonctionnalités principales :
+ * - Affichage des informations détaillées des coachs (photo, description, formations, spécialités)
+ * - Intégration de données structurées Schema.org (JSON-LD) pour améliorer le SEO
+ * - Configuration des métadonnées SEO via l'API `metadata` de Next.js
  *
- * export default function Page() {
- *   return <Presentation />;
- * }
- * ```
+ * @returns {JSX.Element} Page de présentation des coachs.
  */
 
 /**
  * Métadonnées pour la page (SEO + réseaux sociaux).
- * Next.js lira automatiquement cette constante et l'injectera dans le `<head>`.
  *
+ * Next.js utilise automatiquement cette constante pour générer
+ * les balises `<title>`, `<meta>` et les données OpenGraph
+ * utilisées lors du partage sur les réseaux sociaux.
  * @type {Metadata}
  */
 
@@ -43,10 +37,12 @@ export const metadata: Metadata = {
 };
 
 /**
- * @function Presentation
- * @description Affiche la section de présentation des coachs.
- *              Contient les données structurées Schema.org pour Google
- *              et deux cartes de profil `CoachProfileCard` (Laure et Thibaut).
+ * Composant principal affichant la page de présentation.
+ *
+ * Contient :
+ * - les données structurées Schema.org pour Google
+ * - la section de présentation du coaching
+ * - deux cartes de profil (`CoachProfileCard`)
  *
  * @returns {JSX.Element} Composant React représentant la page de présentation.
  */
@@ -112,6 +108,8 @@ export default function Presentation(): JSX.Element {
         }}
       />
 
+      {/* Section principale de présentation */}
+
       <section className="py-16 px-8 max-w-6xl mx-auto space-y-20">
         <div className="text-center space-y-2">
           <h1 className="text-[24px] font-bold text-primary mb-4">
@@ -126,7 +124,7 @@ export default function Presentation(): JSX.Element {
           </p>
         </div>
 
-        {/* Carte pour Laure */}
+        {/* Carte de profil : Laure */}
         <CoachProfileCard
           name="Laure"
           image="/coachFille.webp"
@@ -148,7 +146,7 @@ export default function Presentation(): JSX.Element {
           ]}
           showContact={true}
         />
-        {/* Carte pour Thibaut */}
+        {/* Carte de profil : Thibaut */}
         <CoachProfileCard
           name="Thibaut"
           image="/coachGarcon.webp"
