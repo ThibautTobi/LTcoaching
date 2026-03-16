@@ -2,19 +2,16 @@
 
 import { useState, useMemo } from 'react';
 import { DataService } from '@/utils/data';
-import { CardService } from '@/app/src/components/card';
+import { CardService } from '@/src/components/sections/card';
 import { Button } from '@/src/components/ui/button';
 
-/**
- * Liste des filtres disponibles.
- * Utilisation de `as const` pour générer un type littéral strict (meilleure sécurité TS).
- */
 const filters = ['tous', 'sport', 'bien-être', 'nutrition'] as const;
 type FilterType = (typeof filters)[number];
 
 /**
  * Mapping des filtres vers leurs icônes.
  * Déclaré en dehors du composant pour éviter de recréer l'objet à chaque rendu.
+ * @type {Record<FilterType, string>}
  */
 const icons: Record<FilterType, string> = {
   tous: '',
@@ -24,30 +21,35 @@ const icons: Record<FilterType, string> = {
 };
 
 /**
- * Composant principal de la page Services.
- * - Affiche un titre et une description introductive.
- * - Propose des filtres interactifs (sport, bien-être, nutrition, tous).
- * - Rend une grille de services selon le filtre choisi.
+ * Page affichant les services de LT Coaching.
  *
- * Optimisations apportées :
- * - `useMemo` pour éviter de recalculer la liste filtrée inutilement (meilleure performance).
- * - Extraction de `icons` hors du `.map` (évite des recréations d'objet, plus léger).
- * - Ajout d'un message si aucun service trouvé (meilleure UX).
- * - Accessibilité avec `aria-pressed` pour indiquer l'état actif des boutons.
- * - Typage strict avec `Service` pour limiter les erreurs.
+ * Fonctionnalités :
+ * - Affichage des services disponibles
+ * - Filtrage dynamique par catégorie
+ * - Mise à jour de l’interface selon le filtre sélectionné
  *
- * @returns {JSX.Element} Une section contenant :
- * - Un titre et un paragraphe descriptif.
- * - Une série de boutons de filtre.
- * - Une grille de services filtrés ou un message d'absence.
+ * Structure de la page :
+ * - titre
+ * - description
+ * - filtres interactifs
+ * - grille de services
+ *
+ * @returns {JSX.Element} Page des services avec filtrage dynamique.
  */
 
 export default function ServicesPage() {
   const [selectedFilter, setSelectedFilter] = useState<FilterType>('tous');
 
   /**
-   * Calcul des services filtrés.
-   * `useMemo` évite de recalculer à chaque rendu si `selectedFilter` n'a pas changé.
+   * Liste des services filtrés.
+   *
+   * `useMemo` permet de recalculer la liste uniquement
+   * lorsque le filtre change.
+   *
+   * Sans `useMemo`, le filtrage serait recalculé
+   * à chaque rendu du composant.
+   *
+   * @returns {Service[]} Liste des services correspondant au filtre actif.
    */
 
   const filteredServices = useMemo(() => {

@@ -2,6 +2,16 @@
 
 import Link from 'next/link';
 
+/**
+ * Page des promos des coachs LT Coaching.
+ *
+ * Cette page contient :
+ * - Les promos actuel
+ * - Lien de retour a la page d'acceuil "/"
+ *
+ * @returns {JSX.Element} Page Promo
+ */
+
 export default function Promo() {
   return (
     <section className="max-w-5xl mx-auto py-12">

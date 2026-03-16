@@ -1,32 +1,28 @@
 import Link from 'next/link';
 import { Button } from '@/src/components/ui/button';
 import Image from 'next/image';
-import PromoBande from './src/components/promo';
+import PromoBande from '@/src/components/sections/promo';
 
 /**
- * Page d'accueil (`Home`).
+ * Page d'accueil du site LTcoaching.
  *
  * Cette page contient :
- * - Une bannière avec une image de fond et un dégradé.
- * - Une présentation des services proposés.
- * - Une section "Qui sommes-nous ?" décrivant l'équipe.
- * - Un appel à l'action final avec un bouton de contact.
+ * - Une bannière visuelle avec image de fond
+ * - Un bandeau promotionnel
+ * - Une présentation de l'offre de coaching
+ * - Une section de présentation de l'équipe
+ * - Un appel à l'action menant vers la page de contact
  *
- * @page Home
+ * Cette page est rendue côté client par Next.js dans `app/page.tsx`.
+ *
  * @returns {JSX.Element} Contenu JSX de la page d'accueil.
- *
- * @example
- * // Utilisation par Next.js (fichier `app/page.tsx`)
- * export default function Page() {
- *   return <Home />;
- * }
  */
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Section bannière principale avec image de fond */}
-      <div className="relative w-full h-[250px] md:h-[300x] lg:h-[350px] xl:h-[450px] 2xl:h-[500px] overflow-hidden">
+      <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] xl:h-[450px] 2xl:h-[500px] overflow-hidden">
         <Image
           src="/sport-acceuil.jpg"
           alt="image-sport"
