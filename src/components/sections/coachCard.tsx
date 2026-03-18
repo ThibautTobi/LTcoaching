@@ -94,7 +94,7 @@ export default function CoachProfileCard({
 
         {/* Bouton contact */}
         {showContact && (
-          <Link href="/Contact">
+          <Link href="/contact">
             <Button
               variant={'default'}
               className="mt-6 block mx-auto hover:scale-110 hover:bg-primary/70"

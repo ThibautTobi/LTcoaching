@@ -21,7 +21,7 @@ import Link from 'next/link';
 
 export default function PromoBande() {
   return (
-    <Link href="/Promo">
+    <Link href="/promo">
       <div className="relative overflow-hidden bg-primary text-white py-3 text-2xl cursor-pointer hover:bg-primary/90 transition-colors">
         {/* Effets dégradés aux bords */}
         <div className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-primary to-transparent z-10"></div>

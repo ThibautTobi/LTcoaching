@@ -79,7 +79,7 @@ export default function Home() {
         <p className="text-muted-foreground text-lg mb-8">
           Contact nous dès maintenant et construisons ton plan ensemble.
         </p>
-        <Link href="/Contact">
+        <Link href="/contact">
           {/* <Button
             size="lg"
             className="mt-6 block mx-auto p-2 font-bold bg-primary text-card rounded-xl hover:scale-110 hover:bg-primary/70"
