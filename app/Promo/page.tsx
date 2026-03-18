@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Button } from '@/src/components/ui/button';
 
 /**
  * Page des promos des coachs LT Coaching.
@@ -36,12 +37,13 @@ export default function Promo() {
         Plan nutritionnel <strong className="text-primary">100 €</strong> au
         lieu de <strong className="line-through text-primary">200 €</strong>
       </p>
-      <Link
-        href={'/'}
-        className="block font-semibold text-xl text-primary text-center"
+
+      <Button
+        variant={'default'}
+        className="mt-6 block mx-auto hover:scale-110 hover:bg-primary/70"
       >
-        Acceuil
-      </Link>
+        <Link href={'/'}> Acceuil </Link>
+      </Button>
     </section>
   );
 }
