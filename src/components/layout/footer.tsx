@@ -45,24 +45,24 @@ export default function Footer(): JSX.Element {
           <ul className="space-y-1">
             <li>
               <Link
-                href="/Presentation"
+                href="/presentation"
                 className="hover:text-primary transition"
               >
                 Présentation
               </Link>
             </li>
             <li>
-              <Link href="/Services" className="hover:text-primary transition">
+              <Link href="/services" className="hover:text-primary transition">
                 Services
               </Link>
             </li>
             {/* <li>
-              <Link href="/Tarifs" className="hover:text-primary transition">
+              <Link href="/tarifs" className="hover:text-primary transition">
                 Tarifs
               </Link>
             </li> */}
             <li>
-              <Link href="/Contact" className="hover:text-primary transition">
+              <Link href="/contact" className="hover:text-primary transition">
                 Contact
               </Link>
             </li>
