@@ -1,23 +1,27 @@
 name: CI -  Wite Web LTcoaching
 
+# déclenchement quand ont push sur master
 on:
   push:
-    branches: [master, Dev]
+    branches: [master]
   pull_request:
-    branches: [master, Dev]
+    branches: [master]
 
+# git lance une machine linux
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
 
+    # étapes
     steps:
+      # récupére mon code
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'npm'
 
       - name: Install dependencies
