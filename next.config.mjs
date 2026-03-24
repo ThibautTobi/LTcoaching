@@ -18,6 +18,10 @@ const nextConfig = {
     esmExternals: true, // externalisation en ESM
     forceSwcTransforms: true, // force les transformations modernes
   },
+  // next va créé une version minimal optimisé et autonome pour docker dans : ".next/standalone"
+  // contien l'app compilée et uniquement les dépendances nécessaires , un serveur prêt à lancer : "server.js"
+  output: "standalone",
+
 
   //   images: {
   // domains: ["cdn.sanity.io", "images.unsplash.com"],
