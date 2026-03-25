@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Header from '@/app/src/components/header';
+import Header from '@/src/components/layout/header';
 
 // Mock du composant Image de Next.js pour éviter les erreurs
 jest.mock('next/image', () => {

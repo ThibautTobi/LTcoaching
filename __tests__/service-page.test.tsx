@@ -106,7 +106,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ServicesPage from '@/app/Services/page';
+import ServicesPage from '@/app/services/page';
 import { DataType } from '@/utils/data';
 
 // --- 🔹 MOCKS ---

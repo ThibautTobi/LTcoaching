@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { render, screen } from '@testing-library/react';
-import Presentation from '../app/Presentation/page';
+import Presentation from '@/app/presentation/page';
 import { ImgHTMLAttributes } from 'react';
 
 // --- 🔹 MOCK next/image ---

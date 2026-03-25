@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import NavBar from '@/app/src/components/navBar';
+import NavBar from '@/src/components/layout/navBar';
 import { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
 
 // --- Mock de next/link ---

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import TarifsPage from '../app/Tarifs/page';
+import TarifsPage from '@/app/tarifs/page';
 import { DataType } from '@/utils/data';
 
 // --- 🔹 MOCKS ---

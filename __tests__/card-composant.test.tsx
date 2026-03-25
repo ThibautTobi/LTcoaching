@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { CardService } from '@/app/src/components/card';
+import { CardService } from '@/src/components/sections/card';
 import '@testing-library/jest-dom';
 import { DataType } from '@/utils/data';
 

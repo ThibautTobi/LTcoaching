@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { FilterBar } from '@/app/src/components/filterComposant';
+import { FilterBar } from '@/src/components/sections/filterComposant';
 
 // Définition stricte du type attendu par le composant Button
 type MockButtonProps = {

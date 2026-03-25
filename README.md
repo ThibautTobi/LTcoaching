@@ -63,65 +63,66 @@ LTcoaching est un site conçu pour présenter des services de coaching personnal
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-38BDF8)
 
-* Frontend *
+\* Frontend \*
 
-- Next.js 14 (App Router)
+* Next.js 14 (App Router)
 
-- React 18
+* React 18
 
-- TypeScript
+* TypeScript
 
-- Tailwind CSS
+* Tailwind CSS
 
-- Shadcn UI
+* Shadcn UI
 
-- Radix UI
+* Radix UI
 
-* Gestion des formulaires *
+\* Gestion des formulaires \*
 
-- React Hook Form
+* React Hook Form
 
-- Zod (validation)
+* Zod (validation)
 
-- UX/UI
+* UX/UI
 
-- Lucide Icons
+* Lucide Icons
 
-- Tailwind Animate
+* Tailwind Animate
 
-* Sécurité *
+\* Sécurité \*
 
-- Google reCAPTCHA
+* Google reCAPTCHA
 
-* Email *
+\* Email \*
 
-- EmailJS
+* EmailJS
 
-* Qualité du code *
+\* Qualité du code \*
 
-- ESLint
+* ESLint
 
-- Prettier
+* Prettier
 
-- Husky
+* Husky
 
-- lint-staged
+* lint-staged
 
-* Tests *
+\* Tests \*
 
-- Jest
+* Jest
 
-- Testing Library
+* Testing Library
 
-* SEO *
+\* SEO \*
 
-- next-sitemap
+* next-sitemap
 
-- robots.txt
+* robots.txt
 
-- sitemap.xml
+* sitemap.xml
 
 ## 🚀 Fonctionnalités
+
 - **Design Responsive** : Optimisé pour mobile, tablette et desktop.
 - **Formulaire de Contact** : Pour une communication directe.
 - **Présentation des Offres** : Mise en avant claire des différents programmes.
@@ -136,6 +137,7 @@ LTcoaching est un site conçu pour présenter des services de coaching personnal
 Pour explorer le projet localement :
 
 1. / Cloner le dépôt /
+
    ```bash
    - git clone [https://github.com/ThibautTobi/LTcoaching.git](https://github.com/ThibautTobi/LTcoaching.git)
 
@@ -146,30 +148,32 @@ Pour explorer le projet localement :
    - npm run dev
 
    - http://localhost:3000
+   ```
 
 # variable .env
+
 Email Js :
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=******************
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=******************
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=******************
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=********\*\*********
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=********\*\*********
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=********\*\*********
 
 Recaptcha :
-NEXT_PUBLIC_RECAPTCHA_SITE_KEY=******************
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=********\*\*********
 
 # Scripts disponibles
 
- Script      | Description                       
+Script         | Description
 
- dev         | lance le serveur de développement 
- build       | build production                  
- start       | lance la version build            
- lint        | vérifie les erreurs               
- lint:fix    | corrige automatiquement           
- format      | vérifie le formatage              
- format:fix  | corrige le format                 
- test        | lance les tests                   
- test:watch  | tests en mode watch               
- check:types | vérifie TypeScript                
+dev            | lance le serveur de développement
+build          | build production  
+start          | lance la version build  
+lint           | vérifie les erreurs  
+lint:fix       | corrige automatiquement  
+format         | vérifie le formatage  
+format:fix     | corrige le format  
+test           | lance les tests  
+test:watch     | tests en mode watch  
+check:types    | vérifie TypeScript
 
 # Fonctionnalités
 
@@ -189,9 +193,8 @@ NEXT_PUBLIC_RECAPTCHA_SITE_KEY=******************
 
 Projet développé par Thibaut Tobi.
 
-contact : 
+contact :
 
 https://linkedin.com/in/thibaut-denis-2b12b21b1/
 
 https://portfolio-pro-2025.vercel.app/
-

@@ -82,7 +82,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import ContactPage from '@/app/Contact/page';
+import ContactPage from '@/app/contact/page';
 
 // --- Mocks nécessaires pour le rendu de la page ---
 
