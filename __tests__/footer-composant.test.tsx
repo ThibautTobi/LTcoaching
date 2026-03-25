@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Footer from '../app/src/components/footer';
+import Footer from '@/src/components/layout/footer';
 import React from 'react';
 
 // --- MOCKS ---

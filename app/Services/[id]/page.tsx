@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { DataService } from '@/utils/data';
 import { DataType } from '@/utils/data';
-import { CardService } from '@/app/src/components/card';
+import { CardService } from '@/src/components/sections/card';
 
 // Optionnel : génération statique pour les performances (SSG)
 export async function generateStaticParams() {

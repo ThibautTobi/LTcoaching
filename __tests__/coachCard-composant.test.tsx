@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import React from 'react';
-import CoachProfileCard from '@/app/src/components/coachCard';
+import CoachProfileCard from '@/src/components/sections/coachCard';
 
 // Définition des props autorisées pour le mock d'image
 type MockImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
