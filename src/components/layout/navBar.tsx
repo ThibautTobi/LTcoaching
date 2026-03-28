@@ -13,10 +13,10 @@ import { Menu, X } from 'lucide-react';
 
 const links = [
   { name: 'Accueil', href: '/' },
-  { name: 'Présentation', href: '/presentation' },
-  { name: 'Services', href: '/services' },
+  { name: 'Présentation', href: '/Presentation' },
+  { name: 'Services', href: '/Services' },
   // { name: 'Tarifs', href: '/tarifs' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Contact', href: '/Contact' },
 ];
 
 /**
