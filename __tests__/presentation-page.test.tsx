@@ -23,7 +23,7 @@ type CoachCardProps = {
   imageAlt: string;
 };
 
-jest.mock('../app/src/components/coachCard', () => {
+jest.mock('@/src/components/sections/coachCard', () => {
   const MockCoachProfileCard = ({
     name,
     description,

@@ -19,6 +19,10 @@ jest.mock('next/navigation', () => ({
   usePathname: () => mockUsePathname(),
 }));
 
+jest.mock('next/navigation', () => ({
+  usePathname: () => '/services',
+}));
+
 // --- Mock du composant Button de shadcn/ui ---
 jest.mock('@/src/components/ui/button', () => ({
   __esModule: true,

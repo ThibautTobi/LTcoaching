@@ -52,7 +52,7 @@ jest.mock('@/utils/data', () => ({
 }));
 
 // Mock du composant CardService
-jest.mock('@/app/src/components/card', () => ({
+jest.mock('@/src/components/sections/card', () => ({
   CardService: ({ DataService }: { DataService: DataType }) => (
     <div data-testid="card">{DataService.title}</div>
   ),
@@ -66,7 +66,7 @@ type FilterBarProps = {
 };
 
 // Mock du composant FilterBar
-jest.mock('@/app/src/components/filterComposant', () => ({
+jest.mock('@/src/components/sections/filterComposant', () => ({
   FilterBar: ({ filters, onChange }: FilterBarProps) => (
     <div data-testid="filter-bar">
       {filters.map((filter) => (

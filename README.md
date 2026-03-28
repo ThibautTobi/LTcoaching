@@ -65,61 +65,61 @@ LTcoaching est un site conçu pour présenter des services de coaching personnal
 
 \* Frontend \*
 
-* Next.js 14 (App Router)
+- Next.js 14 (App Router)
 
-* React 18
+- React 18
 
-* TypeScript
+- TypeScript
 
-* Tailwind CSS
+- Tailwind CSS
 
-* Shadcn UI
+- Shadcn UI
 
-* Radix UI
+- Radix UI
 
 \* Gestion des formulaires \*
 
-* React Hook Form
+- React Hook Form
 
-* Zod (validation)
+- Zod (validation)
 
-* UX/UI
+- UX/UI
 
-* Lucide Icons
+- Lucide Icons
 
-* Tailwind Animate
+- Tailwind Animate
 
 \* Sécurité \*
 
-* Google reCAPTCHA
+- Google reCAPTCHA
 
 \* Email \*
 
-* EmailJS
+- EmailJS
 
 \* Qualité du code \*
 
-* ESLint
+- ESLint
 
-* Prettier
+- Prettier
 
-* Husky
+- Husky
 
-* lint-staged
+- lint-staged
 
 \* Tests \*
 
-* Jest
+- Jest
 
-* Testing Library
+- Testing Library
 
 \* SEO \*
 
-* next-sitemap
+- next-sitemap
 
-* robots.txt
+- robots.txt
 
-* sitemap.xml
+- sitemap.xml
 
 ## 🚀 Fonctionnalités
 
@@ -153,27 +153,27 @@ Pour explorer le projet localement :
 # variable .env
 
 Email Js :
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=********\*\*********
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=********\*\*********
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=********\*\*********
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=**\*\*\*\***\*\***\*\*\*\***
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=**\*\*\*\***\*\***\*\*\*\***
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=**\*\*\*\***\*\***\*\*\*\***
 
 Recaptcha :
-NEXT_PUBLIC_RECAPTCHA_SITE_KEY=********\*\*********
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=**\*\*\*\***\*\***\*\*\*\***
 
 # Scripts disponibles
 
-Script         | Description
+Script | Description
 
-dev            | lance le serveur de développement
-build          | build production  
-start          | lance la version build  
-lint           | vérifie les erreurs  
-lint:fix       | corrige automatiquement  
-format         | vérifie le formatage  
-format:fix     | corrige le format  
-test           | lance les tests  
-test:watch     | tests en mode watch  
-check:types    | vérifie TypeScript
+dev | lance le serveur de développement
+build | build production  
+start | lance la version build  
+lint | vérifie les erreurs  
+lint:fix | corrige automatiquement  
+format | vérifie le formatage  
+format:fix | corrige le format  
+test | lance les tests  
+test:watch | tests en mode watch  
+check:types | vérifie TypeScript
 
 # Fonctionnalités
 

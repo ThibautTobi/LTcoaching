@@ -2,21 +2,25 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Header from '@/src/components/layout/header';
 
-// Mock du composant Image de Next.js pour éviter les erreurs
+import { ImgHTMLAttributes } from 'react';
+
 jest.mock('next/image', () => {
-  // eslint-disable-next-line react/display-name
-  const MockedImage = ({
-    alt,
-    ...rest
-  }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+  const MockedImage = (props: ImgHTMLAttributes<HTMLImageElement>) => {
+    const { src, alt, ...rest } = props;
     // eslint-disable-next-line @next/next/no-img-element
-    return <img alt={alt || ''} {...rest} />;
+    return <img src={src as string} alt={alt} {...rest} />;
   };
-  return MockedImage;
+
+  MockedImage.displayName = 'Image';
+
+  return {
+    __esModule: true,
+    default: MockedImage,
+  };
 });
 
 // Mock du composant NavBar pour isoler le test du Header
-jest.mock('@/app/src/components/navBar', () => ({
+jest.mock('@/src/components/layout/navBar', () => ({
   __esModule: true,
   default: () => <nav data-testid="navbar-mock" />,
 }));
@@ -27,7 +31,7 @@ describe('Header', () => {
     render(<Header />);
 
     // 1. Vérifier que le lien du logo est présent et correct (corrigé pour l'accessibilité)
-    const logoLink = screen.getByRole('link', { name: /acceuil/i });
+    const logoLink = screen.getByRole('link', { name: /accueil/i });
     expect(logoLink).toBeInTheDocument();
     expect(logoLink).toHaveAttribute('href', '/');
 
