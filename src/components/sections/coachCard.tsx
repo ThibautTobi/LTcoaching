@@ -98,7 +98,7 @@ export default function CoachProfileCard({
             variant={'default'}
             className="mt-6 block mx-auto hover:scale-110 hover:bg-primary/70"
           >
-            <Link href="/contact"> Contactez-moi </Link>
+            <Link href="/Contact"> Contactez-moi </Link>
           </Button>
         )}
       </div>
