@@ -6,7 +6,7 @@ exports[`Home page snapshot tests devrait correspondre à un snapshot stable 1`]
     class="min-h-screen bg-background text-foreground"
   >
     <div
-      class="relative w-full h-[250px] md:h-[300x] lg:h-[350px] xl:h-[450px] 2xl:h-[500px] overflow-hidden"
+      class="relative w-full h-[250px] md:h-[300px] lg:h-[350px] xl:h-[450px] 2xl:h-[500px] overflow-hidden"
     >
       <img
         alt="image-sport"
@@ -19,7 +19,7 @@ exports[`Home page snapshot tests devrait correspondre à un snapshot stable 1`]
       />
     </div>
     <a
-      href="/Promo"
+      href="/promo"
     >
       <div
         class="relative overflow-hidden bg-primary text-white py-3 text-2xl cursor-pointer hover:bg-primary/90 transition-colors"
@@ -147,7 +147,7 @@ exports[`Home page snapshot tests devrait correspondre à un snapshot stable 1`]
         Contact nous dès maintenant et construisons ton plan ensemble.
       </p>
       <a
-        href="/Contact"
+        href="/contact"
       >
         <button
           class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-card font-bold rounded-full h-10 px-6 py-3 hover:scale-110 hover:bg-primary/70"

@@ -157,7 +157,7 @@ jest.mock('@/utils/data', () => ({
 }));
 
 // Mock de CardService
-jest.mock('@/app/src/components/card', () => ({
+jest.mock('@/src/components/sections/card', () => ({
   CardService: ({ DataService }: { DataService: DataType }) => (
     <div data-testid="card">{DataService.title}</div>
   ),
