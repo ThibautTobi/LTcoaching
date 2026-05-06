@@ -25,7 +25,7 @@ export default function Home() {
       <div className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] xl:h-[450px] 2xl:h-[500px] overflow-hidden">
         <Image
           src="/sport-acceuil.jpg"
-          alt="image-sport"
+          alt="Coaching sportif LT Coaching séance entraînement"
           fill
           className="object-cover w-full h-full"
           sizes=" 100vw "
