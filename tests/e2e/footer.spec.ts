@@ -68,7 +68,7 @@ test.describe('Footer', () => {
   /**
    * Navigation via footer
    */
-  test('should navigate using footer links', async ({ page }) => {
+  test('dois naviguer en utilisant les liens du footer', async ({ page }) => {
     const footer = page.locator('footer');
 
     await footer.getByRole('link', { name: 'Contact', exact: true }).click();
