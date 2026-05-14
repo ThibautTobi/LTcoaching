@@ -22,7 +22,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="text-xl font-bold">
-          <Link href="/" aria-label="acceuil">
+          <Link href="/" aria-label="accueil">
             <Image
               src="/LTcoaching-sansBG.png"
               width={80}
