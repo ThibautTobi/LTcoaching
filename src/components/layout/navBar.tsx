@@ -42,6 +42,7 @@ export default function NavBar() {
           <Link
             key={link.name}
             href={link.href}
+            aria-current={pathname === link.href ? 'page' : undefined}
             className={`text-[#D8D8D8] hover:text-primary transition relative ${
               pathname === link.href
                 ? 'after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-primary'
@@ -60,7 +61,7 @@ export default function NavBar() {
           className="text-primary"
           size="icon"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Ouvrir le menu"
+          aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </Button>
@@ -68,7 +69,10 @@ export default function NavBar() {
 
       {/* Menu Mobile */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-background flex flex-col items-center justify-center">
+        <div
+          className="md:hidden fixed inset-0 z-40 bg-background flex flex-col items-center justify-center"
+          data-testid="mobile-menu" // pour le test playwright
+        >
           {/* Bouton fermeture */}
           <button
             className="absolute top-4 right-4 text-primary"
@@ -84,6 +88,7 @@ export default function NavBar() {
                 <Link
                   href={link.href}
                   onClick={() => setIsOpen(false)}
+                  aria-current={pathname === link.href ? 'page' : undefined}
                   className={`text-[#D8D8D8] hover:text-primary transition relative ${
                     pathname === link.href
                       ? 'after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 after:h-[2px] after:w-full after:bg-primary'
