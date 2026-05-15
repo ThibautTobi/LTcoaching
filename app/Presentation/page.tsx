@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 
 export default function Presentation(): JSX.Element {
   return (
-    <div className="min-h-screen to-muted text-foreground">
+    <main className="min-h-screen to-muted text-foreground">
       {/* Schema.org pour Laure */}
       <script
         type="application/ld+json"
@@ -166,6 +166,6 @@ export default function Presentation(): JSX.Element {
           showContact={true}
         />
       </section>
-    </div>
+    </main>
   );
 }
