@@ -60,7 +60,7 @@ export default function ServicesPage() {
   }, [selectedFilter]);
 
   return (
-    <section className="max-w-5xl mx-auto py-12 px-4">
+    <main className="max-w-5xl mx-auto py-12 px-4">
       <h1 className="text-[24px] font-bold text-center text-[#C6A35E] mb-8">
         Nos Services de Coaching Sportif, Nutrition & Bien-être
       </h1>
@@ -105,7 +105,7 @@ export default function ServicesPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredServices.length > 0 ? (
           filteredServices.map((data) => (
-            <div id={data.id} key={data.id}>
+            <div id={data.id} key={data.id} data-testid="service-card">
               <CardService
                 DataService={data}
                 showDescription={true}
@@ -123,6 +123,6 @@ export default function ServicesPage() {
           </p>
         )}
       </div>
-    </section>
+    </main>
   );
 }
