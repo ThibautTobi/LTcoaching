@@ -1,80 +1,91 @@
-// import React from 'react';
-// import { render, screen } from '@testing-library/react';
-// import '@testing-library/jest-dom';
+/***** a comparer et etudier */
+// import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+// import userEvent from '@testing-library/user-event';
+// import ContactPage from './ContactPage';
+// import emailjs from '@emailjs/browser';
 
-// import ContactPage from '@/app/Contact/page';
+// // 1. On Mock EmailJS pour éviter d'envoyer de vrais emails pendant les tests
+// jest.mock('@emailjs/browser', () => ({
+//   send: jest.fn(() => Promise.resolve({ text: 'OK', status: 200 })),
+// }));
 
-// // --- Mock ReCAPTCHA simplifié ---
-//  jest.mock('react-google-recaptcha', () => {
-//   // eslint-disable-next-line react/display-name
-//   const MockReCAPTCHA = React.forwardRef((props, ref) => {
-//     // On utilise useImperativeHandle pour exposer les méthodes attendues sur la ref
-//     React.useImperativeHandle(ref, () => ({
-//       getValue: jest.fn(() => 'mock-recaptcha-token'),
-//       reset: jest.fn(),
-//       execute: jest.fn(),
-//     }));
-//     return <div data-testid="recaptcha" />;
-//   });
-//   return {
-//     __esModule: true,
-//     default: MockReCAPTCHA,
-//   };
-// });
-
-// // --- Mocks composants Shadcn simplifiés ---
-// jest.mock('@/src/components/ui/form', () => {
+// // 2. On Mock Google reCAPTCHA qui ne peut pas tourner sans un vrai navigateur
+// jest.mock('react-google-recaptcha', () => {
 //   const React = require('react');
-//   return {
-//     Form: ({ children }: { children: React.ReactNode }) => <form>{children}</form>,
-//     FormField: ({ render, name }: { render: any; name: string }) =>
-//       render({ field: { name, id: `field-${name}`, value: '', onChange: jest.fn() } }),
-//     FormItem: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
-//     FormLabel: ({ children, htmlFor }: { children: React.ReactNode; htmlFor?: string }) => (
-//       <label htmlFor={htmlFor}>{children}</label>
-//     ),
-//     FormControl: ({ children, id }: { children: React.ReactNode; id?: string }) => {
-//       const child = React.Children.only(children) as React.ReactElement;
-//       return React.cloneElement(child, { id });
-//     },
-//     FormMessage: () => <div />,
-//   };
+//   // On crée un faux composant qui expose une méthode getValue via forwardRef
+//   return React.forwardRef(({ onChange }, ref) => {
+//     React.useImperativeHandle(ref, () => ({
+//       getValue: () => 'fake-recaptcha-token', // Simule un captcha validé
+//       reset: jest.fn(),
+//     }));
+//     return <div data-testid="mock-recaptcha" />;
+//   });
 // });
 
-// jest.mock('@/src/components/ui/input', () => ({
-//   Input: (props: any) => <input {...props} />,
-// }));
+// describe('ContactPage - Tests Logiques (Jest & RTL)', () => {
 
-// jest.mock('@/src/components/ui/textarea', () => ({
-//   Textarea: (props: any) => <textarea {...props} />,
-// }));
-
-// jest.mock('@/src/components/ui/button', () => ({
-//   Button: ({ children, ...props }: { children: React.ReactNode }) => (
-//     <button {...props}>{children}</button>
-//   ),
-// }));
-
-// // --- Tests ---
-// describe('ContactPage - Tests via placeholders', () => {
-//   test('se rend sans erreur', () => {
+//   test('devrait afficher les erreurs de validation Zod en cas de soumission vide', async () => {
 //     render(<ContactPage />);
-//     expect(screen.getByRole('heading', { name: /contactez-nous/i })).toBeInTheDocument();
+
+//     const submitButton = screen.getByRole('button', { name: /envoyer/i });
+//     await userEvent.click(submitButton);
+
+//     // Vérifie que Zod intercepte les champs vides obligatoires
+//     await waitFor(() => {
+//       expect(screen.getByText('Le nom est requis')).toBeInTheDocument();
+//       expect(screen.getByText('Le prénom est requis')).toBeInTheDocument();
+//       expect(screen.getByText('Le numéro de téléphone est requis')).toBeInTheDocument();
+//     });
 //   });
 
-//   test('contient tous les champs du formulaire via placeholder', () => {
+//   test('devrait valider le téléphone si l’utilisateur met des points ou des espaces', async () => {
 //     render(<ContactPage />);
 
-//     // On teste via les placeholders
-//     expect(screen.getByPlaceholderText(/Votre nom/i)).toBeInTheDocument();
-//     expect(screen.getByPlaceholderText(/Votre Prénom/i)).toBeInTheDocument();
-//     expect(screen.getByPlaceholderText(/Votre numéro de téléphone/i)).toBeInTheDocument();
-//     expect(screen.getByPlaceholderText(/Votre email/i)).toBeInTheDocument();
-//     expect(screen.getByPlaceholderText(/Votre message/i)).toBeInTheDocument();
+//     const phoneInput = screen.getByPlaceholderText('Votre numéro de téléphone');
 
-//     // Vérifie le bouton et reCAPTCHA
-//     expect(screen.getByRole('button', { name: /envoyer/i })).toBeInTheDocument();
-//     expect(screen.getByTestId('recaptcha')).toBeInTheDocument();
+//     // On tape un format que Zod doit nettoyer grâce à .transform()
+//     await userEvent.type(phoneInput, '06.12 34.56 78');
+
+//     const submitButton = screen.getByRole('button', { name: /envoyer/i });
+//     await userEvent.click(submitButton);
+
+//     // L'erreur "Le numéro doit contenir exactement 10 chiffres" ne doit pas apparaître
+//     expect(screen.queryByText('Le numéro doit contenir exactement 10 chiffres')).not.toBeInTheDocument();
+//   });
+
+//   test('devrait rejeter un email mal formaté et un message trop court', async () => {
+//     render(<ContactPage />);
+
+//     const emailInput = screen.getByPlaceholderText('Votre email');
+//     const messageInput = screen.getByPlaceholderText('Votre message');
+
+//     await userEvent.type(emailInput, 'mauvais-format-email');
+//     await userEvent.type(messageInput, 'Short'); // Moins de 10 caractères
+
+//     const submitButton = screen.getByRole('button', { name: /envoyer/i });
+//     await userEvent.click(submitButton);
+
+//     await waitFor(() => {
+//       expect(screen.getByText('Email invalide')).toBeInTheDocument();
+//       expect(screen.getByText('Message trop court')).toBeInTheDocument();
+//     });
+//   });
+
+//   test('devrait changer le texte du bouton lors de la phase d’envoi asynchrone', async () => {
+//     render(<ContactPage />);
+
+//     // Remplissage valide de tous les champs pour déclencher le onSubmit
+//     await userEvent.type(screen.getByPlaceholderText('Votre nom'), 'Dupont');
+//     await userEvent.type(screen.getByPlaceholderText('Votre Prénom'), 'Jean');
+//     await userEvent.type(screen.getByPlaceholderText('Votre numéro de téléphone'), '0612345678');
+//     await userEvent.type(screen.getByPlaceholderText('Votre email'), 'jean@gmail.com');
+//     await userEvent.type(screen.getByPlaceholderText('Votre message'), 'Bonjour, je souhaite réserver un créneau.');
+
+//     const submitButton = screen.getByRole('button', { name: 'Envoyer' });
+//     await userEvent.click(submitButton);
+
+//     // Vérifie le passage instantané à l'état visuel "Envoi..."
+//     expect(screen.getByRole('button', { name: /envoi.../i })).toBeInTheDocument();
 //   });
 // });
 
@@ -82,7 +93,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import ContactPage from '@/app/Contact/page';
+import ContactPage from '@/app/contact/page';
 
 // --- Mocks nécessaires pour le rendu de la page ---
 
