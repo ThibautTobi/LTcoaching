@@ -1,0 +1,153 @@
+
+
+Besoin métier
+    ↓
+Exigences fonctionnelles
+    ↓
+Plan de test
+    ↓
+Conception des tests
+    ↓
+Cas de test
+    ↓
+Exécution des tests
+    ↓
+Rapports / anomalies
+    ↓
+Validation qualité
+
+
+1. Introduction
+2. Scope
+3. Objectifs
+4. Fonctionnalités à tester
+5. Fonctionnalités non testées
+6. Stratégie de test
+7. Types de tests
+8. Environnement de test
+9. Critères d’entrée/sortie
+10. Gestion des anomalies
+11. Risques
+12. Planning
+13. Responsabilités
+14. Outils
+15. Livrables
+
+/**************************************** 1 introduction **/
+
+Le projet utilise =>
+
+- Frontend                  : React / Next.js
+
+- Backend                   : x
+
+- Base de Données           : x
+
+- outils Test :
+-- Postman                  : x
+-- Jest                     : *
+-- React Testing Library    : *
+-- Playwright               : *
+
+/**************************************** 2 scope **/
+
+Le périmètre des tests comprend :
+
+- Affichage des bon contenus
+- Navigation
+- Responsive
+- Formulaire contact
+- Seo
+- accessibilité
+
+/**************************************** 3 Objectis **/
+
+- Garantir la stabilité des fonctionnalités
+- Réduire les régressions
+- Valider les parcours utilisateur critiques
+- Sécuriser les endpoints API
+
+/**************************************** 4 Fonctionnalités à tester **/
+
+Fonctionnalité              Priorité
+
+Affichage du contenu        Haute
+Navigation                  critique
+Formulaire                  Critique
+accessibilité               Moyenne
+Seo                         Moyenne
+
+/**************************************** 5 Fonctionnalités NON testées **/
+
+Les tests de montée en charge ne sont pas inclus dans cette phase.
+
+/**************************************** 6 Stratégie de test **/
+
+Type :                   Outil :
+
+Unitaires               Jest
+Intégration             RTL
+E2E                     Playwright
+accessibilité           Axe
+Performance             Lighthouse
+
+/**************************************** 7 Types de tests ISTQB **/
+
+Type :                      Description : 
+
+fonctionnelles              vérifie comportement
+régressions                 vérifie anciennes features
+Sécurié                     Validation Formulaire
+UX                          Responsive / accessibilité
+Performance                 Temps de chargement
+
+/**************************************** 8 Environnement de test **/
+
+//////( a finir )///////
+
+- Node.js v 
+
+/**************************************** 9 Critéres d'entrée / sortie **/
+
+//////( a finir )///////
+
+Entrée
+Avant tests :
+
+Build OK
+Déploiement staging OK
+Base de données prête
+
+Sortie
+Fin de campagne si :
+
+95% tests critiques passés
+Aucun bug bloquant
+Couverture minimale atteinte
+
+/**************************************** 10 Gestion des anomalies **/
+
+( Exemple ) 
+Sévérité :                   Description :
+
+Critique                    aucun Affichage des contenus
+Haute                       Formulaire cassé
+Moyenne                     Responsive Ui dégradé
+Faible                      Petit probléme visuel
+
+/**************************************** 11 Risques **/
+
+////////( a finir)//////
+Risque                         Impact
+
+Mauvaise couverture RTL         Régresions UI
+
+/**************************************** 12 Outils **/
+
+Outil :                    Usage : 
+
+Jest                        Unitaires
+RTL                         Composants React
+Playwright                  E2E
+GitHub Actions              CI/CD 
+ESLint                      Qualité
